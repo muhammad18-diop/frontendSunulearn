@@ -1,0 +1,164 @@
+[
+    {
+        "id": 1,
+        "titre": "Ecole Nationale d'Administration concours directs",
+        "description": "Cours complet de l'ENA qui inclu les programmes du cycle A et B  direct",
+        "image": "images/ena.jpg",
+        "lien": "ena.html",
+        "categorie": "Administration",
+        "distinction": "plus suivi"
+    },
+    {
+        "id": 2,
+        "titre": "Ecole Supérieur Polytechnique de Dakar concours DUT",
+        "description": "Cours complet de l'ESP qui inclu les programmes du cycle DUT ainsi que l'accés à cette école passant par toute les filiéres.",
+        "image": "images/esp.png",
+        "lien": "espDUT.html",
+        "categorie": "Grande Ecole",
+         "distinction": "plus suivi"
+    },
+    {
+        "id": 3,
+        "titre": "Ecole Nationale de Police",
+        "description": "Cours complet du concours de police qui inclu les programmes de toutes les grades allant de l'agent aux commissaires.",
+        "image": "images/police.jpg",
+        "lien": "police.html",
+        "categorie": "Militaire",
+         "distinction": "plus suivi"
+    },
+    {
+        "id": 4,
+        "titre": "Ecole Nationale de Douanes",
+        "description": "Cours complet du concours de Douane qui inclu les programmes de toutes les grades allant de l'agent brevetés aux controleurs.",
+        "image": "images/douane.png",
+        "lien": "douane.html",
+        "categorie": "Militaire",
+         "distinction": "plus suivi"
+    },
+    {
+        "id": 5,
+        "titre": "Ecole Nationale de la Gendarmerie",
+        "description": "Cours complet du concours de la gendarmerie qui inclu les programmes de l'EOGN L'ESOGN.",
+        "image": "images/gendarmerie.jpg",
+        "lien": "gendarmerie.html",
+        "categorie": "Militaire",
+         "distinction": "plus suivi"
+    },
+    {
+        "id": 6,
+        "titre": "Ecole Nationale de Formation Judicaire",
+        "description": "Cours complet du concours du CJF qui inclu les programmes de tous les cycles (éducateurs spécialisés, magistrature, greffe).",
+        "image": "images/cfj.png",
+        "lien": "cfj.html",
+        "categorie": "Administration",
+         "distinction": "plus suivi"
+    },
+    {
+        "id": 7,
+        "titre": "Ecole Supérieur Polytechnique de Thies",
+        "description": "Cours complet de l'EPT qui inclu les programmes du cycle DTS et DIC ainsi que l'accés à cette école passant par toute les filiéres.",
+        "image": "images/ept.jpg",
+        "lien": "ept.html",
+        "categorie": "Grande Ecole"
+    },
+    {
+        "id": 8,
+        "titre": "Ecole Nationale d'agriculture",
+        "description": "Cours complet de l'ENSA qui inclu les programmes du cycle DTS et DIC ainsi que l'accés à cette école passant par toute les filiéres.",
+        "image": "images/ensa.jpg",
+        "lien": "ensa.html",
+        "categorie": "Grande Ecole"
+    },
+    {
+        "id": 9,
+        "titre": "Ecole Supérieur Polytechnique de Saint-Louis",
+        "description": "Cours complet de l'IPSL qui inclu les programmes du cycle DTS et DIC ainsi que l'accés à cette école passant par toute les filiéres.",
+        "image": "images/ipsl.png",
+        "lien": "ipsl.html",
+        "categorie": "Grande Ecole"
+    },
+     {
+        "id": 10,
+        "titre": "Université Amadou Mactar Mbow",
+        "description": "Cours complet de l'UAM qui inclu les programmes du cycle DTS et DIC ainsi que l'accés à cette école passant par toute les filiéres.",
+        "image": "images/uam.png",
+        "lien": "uam.html",
+        "categorie": "Grande Ecole"
+    },
+      {
+        "id": 11,
+        "titre": "Ecole des mines ert de la Géologie",
+        "description": "Cours complet de l'ENSMG qui inclu les programmes du cycle DTS et DIC ainsi que l'accés à cette école passant par toute les filiéres.",
+        "image": "images/ensmg.jpg",
+        "lien": "uam.html",
+        "categorie": "Grande Ecole"
+    },
+
+    
+      {
+        "id": 11,
+        "titre": "Ecole Nationale des Officiers d'Actives",
+        "description": "Cours complet de l'ENOA qui inclu les programmes du cycle direct et professionnels.",
+        "image": "images/enoa.jpg",
+        "lien": "enoa.html",
+        "categorie": "Militaire"
+    },
+     {
+        "id": 12,
+        "titre": "Ecole Nationale des Sous  Officiers d'Actives",
+        "description": "Cours complet de l'ENSOA qui inclu les programmes du cycle direct et professionnels.",
+        "image": "images/ensoa.jpg",
+        "lien": "ensoa.html",
+        "categorie": "Militaire"
+    },
+    {
+        "id": 13,
+        "titre": "Ecole Nationale des Officiers de la Gendarmerie",
+        "description": "Cours complet de l'EOGN qui inclu les programmes du cycle direct et professionnels.",
+        "image": "images/eogn.jpg",
+        "lien": "eogn.html",
+        "categorie": "Militaire"
+    },
+    {
+        "id": 14,
+        "titre": "Ecole Miltaire de Santé",
+        "description": "Cours complet de l'EMS qui inclu les programmes du cycle direct et professionnels.",
+        "image": "images/ems.jpg",
+        "lien": "ems.html",
+        "categorie": "Militaire"
+    },
+    {
+        "id": 15,
+        "titre": "Ecole Nationale des Officiers de l'Armée de l'Air",
+        "description": "Cours complet de l'EEA qui inclu les programmes du cycle direct et professionnels.",
+        "image": "images/eea.jpg",
+        "lien": "eea.html",
+        "categorie": "Militaire"
+    },
+    {
+        "id": 16,
+        "titre": "Concours Unique aux Grandes Ecoles Militaire",
+        "description": "Cours complet de l'CUGEM qui inclu les programmes du cycle direct et professionnels.",
+        "image": "images/cugem.jpg",
+        "lien": "cugem.html",
+        "categorie": "Militaire"
+    },
+     {
+        "id": 17,
+        "titre": "Ecole Nationale d'Administration cycle Professionnels",
+        "description": "Cours complet de l'ENA qui inclu les programmes du cycle  professionnel ",
+        "image": "images/ena.jpg",
+        "lien": "ena.html",
+        "categorie": "Administration",
+        "distinction": "plus suivi"
+    },
+    {
+        "id": 2,
+        "titre": "Ecole Supérieur Polytechnique de Dakar concours DIC",
+        "description": "Cours complet de l'ESP qui inclu les programmes du cycle  DIC ainsi que l'accés à cette école passant par toute les filiéres.",
+        "image": "images/esp.png",
+        "lien": "esp.html",
+        "categorie": "Grande Ecole",
+         "distinction": "plus suivi"
+    }
+]

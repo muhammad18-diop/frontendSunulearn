@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "titre": "Ecole Nationale d'Administration",
+        "description": "Cours complet de l'ENA qui inclu les programmes du cycle A et B professionnel et direct",
+        "image": "images/ena.jpg",
+        "lien": "ena.html"
+    },
+    {
+        "id": 2,
+        "titre": "Ecole Supérieur Polytechnique de Dakar",
+        "description": "Cours complet de l'ESP qui inclu les programmes du cycle DTS et DIC ainsi que l'accés à cette école passant par toute les filiéres.",
+        "image": "images/esp.png",
+        "lien": "frontend/espDUT.html"
+    },
+    {
+        "id": 3,
+        "titre": "Ecole Nationale de Police",
+        "description": "Cours complet du concours de police qui inclu les programmes de toutes les grades allant de l'agent aux commissaires.",
+        "image": "images/police.jpg",
+        "lien": "police.html"
+    },
+    {
+        "id": 4,
+        "titre": "Ecole Nationale de Douanes",
+        "description": "Cours complet du concours de Douane qui inclu les programmes de toutes les grades allant de l'agent brevetés aux controleurs.",
+        "image": "images/douane.png",
+        "lien": "douane.html"
+    },
+    {
+        "id": 5,
+        "titre": "Ecole Nationale de la Gendarmerie",
+        "description": "Cours complet du concours de la gendarmerie qui inclu les programmes de l'EOGN L'ESOGN.",
+        "image": "images/gendarmerie.jpg",
+        "lien": "gendarmerie.html"
+    },
+    {
+        "id": 6,
+        "titre": "Ecole Nationale de Formation Judicaire",
+        "description": "Cours complet du concours du CJF qui inclu les programmes de tous les cycles (éducateurs spécialisés, magistrature, greffe).",
+        "image": "images/cfj.png",
+        "lien": "cfj.html"
+    }
+]
