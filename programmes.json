@@ -1,10 +1,10 @@
 [
     {
         "id": 1,
-        "titre": "Ecole Nationale d'Administration concours directs",
-        "description": "Cours complet de l'ENA qui inclu les programmes du cycle A et B  direct",
+        "titre": "Ecole Nationale d'Administration concours directs Cycle B",
+        "description": "Cours complet de l'ENA qui inclu les programmes du cycle  B  direct",
         "image": "images/ena.jpg",
-        "lien": "ena.html",
+        "lien": "enadirectB.html",
         "categorie": "Administration",
         "distinction": "plus suivi"
     },

@@ -4,7 +4,7 @@
         "titre": "Cours de français Roman",
         "description": "Cours complet de français pour la classe de terminale qui inclut toutes les fonctions du roman",
         "image": "images/esp.png",
-        "lien": "cours-esp-dut/roman.pdf",
+        "lien": "cours-esp-dut/roman2.pdf",
         "categorie": "français",
         "distinction": "plus suivi"
     },
@@ -13,7 +13,7 @@
         "titre": "Cours de français Poésie",
         "description": "Cours complet de français pour la classe de terminale qui inclut toutes les fonctions de la poésie",
         "image": "images/esp.png",
-        "lien": "cours-esp-dut/COURS COMPLET SUR LA POÉSIE.pdf",
+        "lien": "cours-esp-dut/poésie2.pdf",
         "categorie": "français",
         "distinction": "plus suivi"
     },
@@ -22,7 +22,7 @@
         "titre": "Cours de français Théatre",
         "description": "Cours complet de français pour la classe de terminale qui inclut toutes les fonctions du thêatre",
         "image": "images/esp.png",
-        "lien": "cours-esp-dut/theatre.pdf",
+        "lien": "cours-esp-dut/theatre2.pdf",
         "categorie": "français",
         "distinction": "plus suivi"
     },
@@ -238,7 +238,7 @@
         "titre": "Cours de Physique Chimique niveau énérgie d'atome",
         "description": "Cours complet de PC pour la classe de terminale S sur les niveau  énérgie d'atomes",
         "image": "images/esp.png",
-        "lien": "cours-esp-dut/niveau-energie.pdf",
+        "lien": "cours-esp-dut/niveau energie2.pdf",
         "categorie": "PC",
         "distinction": "plus suivi"
     },
@@ -247,7 +247,7 @@
         "titre": "Cours de Physique Chimique niveau réaction nucléaire",
         "description": "Cours complet de PC pour la classe de terminale S sur les réactions nucléaire",
         "image": "images/esp.png",
-        "lien": "cours-esp-dut/réaction nucléaire.pdf.crdownload",
+        "lien": "cours-esp-dut/reac.pdf",
         "categorie": "PC",
         "distinction": "plus suivi"
     },
