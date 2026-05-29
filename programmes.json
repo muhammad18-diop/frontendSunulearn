@@ -27,6 +27,15 @@
          "distinction": "plus suivi"
     },
     {
+        "id": 1,
+        "titre": "Ecole Nationale d'Administration concours directs Cycle A",
+        "description": "Cours complet de l'ENA qui inclu les programmes du cycle  A  direct",
+        "image": "images/ena.jpg",
+        "lien": "enadirectA.html",
+        "categorie": "Administration",
+        "distinction": "plus suivi"
+    },
+    {
         "id": 4,
         "titre": "Ecole Nationale de Douanes",
         "description": "Cours complet du concours de Douane qui inclu les programmes de toutes les grades allant de l'agent brevetés aux controleurs.",
