@@ -6,7 +6,8 @@
         "image": "images/ena.jpg",
         "lien": "enadirectB.html",
         "categorie": "Administration",
-        "distinction": "plus suivi"
+        "distinction": "plus suivi",
+        
     },
     {
         "id": 2,
