@@ -188,15 +188,13 @@ pc.addEventListener("click", () => {
   cours_pc();
 })
 
-document.addEventListener("click", (e) => {
-  const token = localStorage.getItem("token");
+document.querySelectorAll(".lien").forEach(link => {
+  link.addEventListener("click", (e) => {
+    const token = localStorage.getItem("token");
 
-  const lien = e.target.closest(".lien");
-
-  if (lien) {
     if (!token) {
       e.preventDefault();
       window.location.href = "connexion.html";
     }
-  }
+  });
 });
