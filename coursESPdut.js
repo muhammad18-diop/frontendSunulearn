@@ -146,52 +146,77 @@ francais.addEventListener("click", () => {
   affiche.innerHTML = ""
   cours_francais();
 })
-
 let pc = document.getElementById("pc");
 
-async function cours_pc (){
-  const response = await fetch ("coursESPDUT.json");
-  const donne = await response.json();
+async function cours_pc() {
+  try {
+    const response = await fetch("coursESPDUT.json");
+    const donne = await response.json();
 
-  const donnePC = donne.filter(p => p.categorie == "PC");
+    const donnePC = donne.filter(p => p.categorie === "PC");
 
-  donnePC.forEach(c => {
-    affiche.innerHTML += 
-     `
-        
-             
-        <div class="bg-white p-4 rounded-xl shadow" data-aos="flip-left"
-     data-aos-easing="ease-out-cubic"
-     data-aos-duration="2000">
+    let html = "";
+
+    donnePC.forEach(c => {
+      html += `
+        <div class="bg-white p-4 rounded-xl shadow"
+             data-aos="flip-left"
+             data-aos-easing="ease-out-cubic"
+             data-aos-duration="2000">
+
           <img 
-
             src="${c.image}" 
-
-            class=" h-48 object-cover  rounded-lg">
+            class="h-48 object-cover rounded-lg"
+            alt="${c.titre}">
 
           <h2 class="text-xl font-bold mt-4">
-
             ${c.titre}
-
           </h2>
 
           <p class="text-gray-600">
             ${c.description}
           </p>
-          
-<a href="${c.lien}" class="lien inline-flex font-medium items-center text-fg-brand hover:underline"  >
-        Consulter
-        <svg class="w-4 h-4 ms-2 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"/></svg>
-    </a>
-        </div>`;
-  })
-  
+
+          <a href="${c.lien}"
+             class="lien inline-flex font-medium items-center text-fg-brand hover:underline"
+             target="_blank">
+
+            Consulter
+
+            <svg class="w-4 h-4 ms-2 rtl:rotate-[270deg]"
+                 aria-hidden="true"
+                 xmlns="http://www.w3.org/2000/svg"
+                 width="24"
+                 height="24"
+                 fill="none"
+                 viewBox="0 0 24 24">
+
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"/>
+            </svg>
+
+          </a>
+
+        </div>
+      `;
+    });
+
+    affiche.innerHTML = html;
+
+  } catch (error) {
+    console.error("Erreur lors du chargement des cours :", error);
+  }
 }
 
 pc.addEventListener("click", () => {
   affiche.innerHTML = "";
   cours_pc();
-})
+});
+
 
 document.addEventListener("click", (e) => {
   const lien = e.target.closest(".lien");
@@ -205,3 +230,5 @@ document.addEventListener("click", (e) => {
     window.location.href = "connexion.html";
   }
 });
+
+console.log(localStorage.getItem("token"));
