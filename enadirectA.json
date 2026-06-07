@@ -368,5 +368,96 @@
         "lien": "ena A direct/droit/Le controle des collectivités territoriales.pdf",
         "categorie": "ena A direct",
         "distinction": "droit"
+    },
+    {
+        "id": 7,
+        "titre": "Cours Economie regionale",
+        "description": "Cours complet Economie Regionale ENA Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/economie regionale.pdf",
+        "categorie": "ena A direct",
+        "distinction": "economie"
+    },
+    {
+        "id": 7,
+        "titre": "Cours Commerce internationale et finance internationale",
+        "description": "Cours complet commerce internationale et finance internationale ENA Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/Commerce international.pdf",
+        "categorie": "ena A direct",
+        "distinction": "economie"
+    },
+    {
+        "id": 7,
+        "titre": "Cours Economie du développement",
+        "description": "Cours complet Economie du déveeloppement ENA Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/economie du développement.pdf",
+        "categorie": "ena A direct",
+        "distinction": "economie"
+    },
+    {
+        "id": 7,
+        "titre": "Cours Economie de l'environnement",
+        "description": "Cours complet Economie de l'Environnement ENA Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/economie environnement.pdf",
+        "categorie": "ena A direct",
+        "distinction": "economie"
+    },
+    {
+        "id": 7,
+        "titre": "Cours Economie monétaire",
+        "description": "Cours complet Economie monetaire ENA Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/economie monetaire.pdf",
+        "categorie": "ena A direct",
+        "distinction": "economie"
+    },
+    {
+        "id": 7,
+        "titre": "Cours Economie du Travail",
+        "description": "Cours complet Economie du Travail ENA Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/economie du travail.pdf",
+        "categorie": "ena A direct",
+        "distinction": "economie"
+    }
+    ,
+    {
+        "id": 7,
+        "titre": "Cours Enjeux du numérique",
+        "description": "Cours complet Enjeux du numérique ENA Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/Enjeux du numérique.pdf",
+        "categorie": "ena A direct",
+        "distinction": "economie"
+    },
+    {
+        "id": 7,
+        "titre": "Cours d'economie pulique Reseaux Sociaux et utilisation",
+        "description": "Cours complet reseaux sociaux et utilisation ENA Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/Réseaux sociaux et utilisation.pdf",
+        "categorie": "ena A direct",
+        "distinction": "economie"
+    },
+    {
+        "id": 7,
+        "titre": "Cours Economie de la Santé",
+        "description": "Cours complet Economie de la Santé ENA Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/economie de la santé.pdf",
+        "categorie": "ena A direct",
+        "distinction": "economie"
+    },
+    {
+        "id": 7,
+        "titre": "Cours Politique économique",
+        "description": "Cours complet Politique économique ENA Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/Politique économique.pdf",
+        "categorie": "ena A direct",
+        "distinction": "economie"
     }
 ]
