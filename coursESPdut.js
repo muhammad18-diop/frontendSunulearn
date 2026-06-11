@@ -241,13 +241,11 @@ const menuProfile = document.getElementById("menuProfile");
 const token = localStorage.getItem("token");
 
 if (token) {
-  
     if (btnConnexion) btnConnexion.classList.add("hidden");
     if (btnProfile) btnProfile.classList.remove("hidden");
 
     const nom = localStorage.getItem("nom") || "Utilisateur";
     const email = localStorage.getItem("email") || "";
-
     
     const elNom = document.getElementById("nomUtilisateur");
     const elProfNom = document.getElementById("profileNom");
@@ -256,7 +254,6 @@ if (token) {
     if (elNom) elNom.textContent = nom;
     if (elProfNom) elProfNom.textContent = nom;
     if (elProfEmail) elProfEmail.textContent = email;
-
     
     if (btnDeconnexion) {
         btnDeconnexion.disabled = false;
@@ -265,19 +262,68 @@ if (token) {
     }
 }
 
-
 btnProfile?.addEventListener("click", (e) => {
     e.stopPropagation(); 
     menuProfile?.classList.toggle("hidden");
 });
 
-btnDeconnexion?.addEventListener("click", () => {
+
+btnDeconnexion?.addEventListener("click", (e) => {
+    e.stopPropagation(); 
+    
+    const $logoutModalElement = document.getElementById('logoutModal');
+    
+    if ($logoutModalElement) {
+        let logoutModal;
+        
+        
+        if (typeof Modal !== 'undefined') {
+            logoutModal = new Modal($logoutModalElement);
+        } else if (typeof flowbite !== 'undefined' && flowbite.Modal) {
+            logoutModal = new flowbite.Modal($logoutModalElement);
+        }
+
+        if (logoutModal) {
+            
+            menuProfile?.classList.add("hidden");
+            
+            
+            logoutModal.show();
+
+            
+            const btnAnnuler = document.querySelectorAll("[id='btnAnnulerDeconnexion']");
+            btnAnnuler.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    logoutModal.hide();
+                });
+            });
+
+            
+            const btnConfirmer = document.getElementById("btnConfirmerDeconnexion");
+            btnConfirmer?.addEventListener("click", () => {
+                logoutModal.hide();
+                localStorage.removeItem("token");
+                localStorage.removeItem("nom");
+                localStorage.removeItem("email");
+                window.location.replace("index.html"); 
+            });
+        } else {
+            
+            procederDeconnexionDirecte();
+        }
+    } else {
+        
+        procederDeconnexionDirecte();
+    }
+});
+
+
+function procederDeconnexionDirecte() {
     localStorage.removeItem("token");
     localStorage.removeItem("nom");
     localStorage.removeItem("email");
     window.location.replace("index.html");
-});
-
+}
 
 document.addEventListener("click", (e) => {
     if (
@@ -288,4 +334,3 @@ document.addEventListener("click", (e) => {
         menuProfile.classList.add("hidden");
     }
 });
-

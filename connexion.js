@@ -23,7 +23,7 @@ form.addEventListener("submit", async (e) => {
             localStorage.setItem("nom", data.user.name);
             localStorage.setItem("email", data.user.email);
 
-            // Gestion et affichage de la boîte modale de succès
+            
             const $modalElement = document.getElementById('successModal');
             
             if ($modalElement) {
@@ -50,7 +50,7 @@ form.addEventListener("submit", async (e) => {
                 window.location.replace("index.html");
             }
         } else {
-            // GESTION DE LA MODAL D'ERREUR (Email ou mot de passe incorrect)
+            
             const $errorModalElement = document.getElementById('errorModal');
             
             if ($errorModalElement) {
@@ -62,7 +62,7 @@ form.addEventListener("submit", async (e) => {
                 }
 
                 if (errorModal) {
-                    // Injecte dynamiquement le message d'erreur du back-end dans la modal
+                    
                     const errorMessageElement = document.getElementById("errorMessageModal");
                     if (errorMessageElement) {
                         errorMessageElement.textContent = data.message || "Email ou mot de passe incorrect.";
