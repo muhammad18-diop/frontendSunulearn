@@ -24,7 +24,7 @@ form.addEventListener("submit", async (e) => {
             localStorage.setItem("nom", data.user.name);
             localStorage.setItem("email", data.user.email);
 
-            window.location.href = "index.html";
+            window.location.replace("index.html");
         } else {
             alert(data.message);
         }
