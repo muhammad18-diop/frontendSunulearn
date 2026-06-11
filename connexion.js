@@ -7,38 +7,29 @@ form.addEventListener("submit", async (e) => {
     const password = document.getElementById("password").value;
 
     try {
-
         const response = await fetch("https://backendsunulearn-3.onrender.com/api/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                email,
-                password
-            })
+            body: JSON.stringify({ email, password })
         });
 
         const data = await response.json();
 
         if (response.ok) {
-
             alert("Connexion réussie");
 
-            console.log(data);
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("nom", data.user.name);
+            localStorage.setItem("email", data.user.email);
 
-           
-            localStorage.setItem("token", data.token)
-
+            window.location.href = "index.html";
         } else {
-
-            alert(data.message || "Erreur de connexion");
-
+            alert(data.message);
         }
 
     } catch (error) {
-
         console.log("Erreur :", error);
-
     }
 });
