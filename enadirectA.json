@@ -459,5 +459,32 @@
         "lien": "ena A direct/droit/Politique économique.pdf",
         "categorie": "ena A direct",
         "distinction": "economie"
+    },
+    {
+        "id": 7,
+        "titre": "Cours Gouvernance Publique et Performance",
+        "description": "Cours complet Gouvernance pulique et Performance Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/gouvernancePublique.pdf",
+        "categorie": "ena A direct",
+        "distinction": "gestionPublique"
+    },
+    {
+        "id": 7,
+        "titre": "Cours Gestion Axée Sur Les Résultats",
+        "description": "Cours complet gestion axée sur les Résultats ENA Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/GestionAxee.pdf",
+        "categorie": "ena A direct",
+        "distinction": "gestionPublique"
+    },
+    {
+        "id": 7,
+        "titre": "Cours Nouveaux mécanismes de financement du développement",
+        "description": "Cours complet Nouveaux mécanismes de financement du développement ENA Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/nouveauxMecanisme.pdf",
+        "categorie": "ena A direct",
+        "distinction": "gestionPublique"
     }
 ]
