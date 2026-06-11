@@ -486,5 +486,77 @@
         "lien": "ena A direct/droit/nouveauxMecanisme.pdf",
         "categorie": "ena A direct",
         "distinction": "gestionPublique"
+    },
+    {
+        "id": 7,
+        "titre": "Cours Partenariat Public-Privé",
+        "description": "Cours complet partenariat public-privé ENA Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/ppp.pdf",
+        "categorie": "ena A direct",
+        "distinction": "gestionPublique"
+    },
+    {
+        "id": 7,
+        "titre": "Cours Planification Territoriale et développement Local",
+        "description": "Cours complet planification territoriale et développement local ENA Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/planificationTerritorial.pdf",
+        "categorie": "ena A direct",
+        "distinction": "gestionPublique"
+    },
+    {
+        "id": 7,
+        "titre": "Cours Modernisation de l'administration Publique",
+        "description": "Cours complet modernisation de l'administration publique ENA Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/modernisationGP.pdf",
+        "categorie": "ena A direct",
+        "distinction": "gestionPublique"
+    },
+    {
+        "id": 7,
+        "titre": "Cours Qualité du service Publique et réforme de l'Etat",
+        "description": "Cours complet qualite du service publique et réforme de l'Etat ENA Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/qualiteService.pdf",
+        "categorie": "ena A direct",
+        "distinction": "gestionPublique"
+    },
+    {
+        "id": 7,
+        "titre": "Cours Problématique de la création et du fonctionnement des agences publiques au Sénégal",
+        "description": "Cours complet Problématique de la création et du fonctionnement des agences publiques au Sénégal ENA Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/agencification.pdf",
+        "categorie": "ena A direct",
+        "distinction": "gestionPublique"
+    },
+    {
+        "id": 7,
+        "titre": "Cours Gestion des entreprises publiques et participation de l’État",
+        "description": "Cours complet Gestion des entreprises publiques et participation de l’État ENA Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/entreprisePublique.pdf",
+        "categorie": "ena A direct",
+        "distinction": "gestionPublique"
+    },
+    {
+        "id": 7,
+        "titre": "Cours Institutions administratives comparées (approche internationale)",
+        "description": "Cours complet Institutions administratives comparées (approche internationale) ENA Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/institutions.pdf",
+        "categorie": "ena A direct",
+        "distinction": "gestionPublique"
+    },
+    {
+        "id": 7,
+        "titre": "Cours Organisations politiques, administratives et judiciaires au Sénégal",
+        "description": "Cours complet Organisations politiques, administratives et judiciaires au Sénégal ENA Cycle A",
+        "image": "images/ena.jpg",
+        "lien": "ena A direct/droit/OrganisationEtatique.pdf",
+        "categorie": "ena A direct",
+        "distinction": "gestionPublique"
     }
 ]
