@@ -79,6 +79,7 @@ console.log(btncultureGenerale);
 
 btncultureGenerale.addEventListener("click", () => {
  CultureGenerale();
+ alert("clic");
 })
 
 
