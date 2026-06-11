@@ -44,3 +44,76 @@ async function cours() {
 }
 
 cours();
+
+
+const btnProfile = document.getElementById("btnProfile");
+const menuProfile = document.getElementById("menuProfile");
+
+btnProfile.addEventListener("click", () => {
+    menuProfile.classList.toggle("hidden");
+});
+
+document.addEventListener("click", (e) => {
+    if (!btnProfile.contains(e.target) && !menuProfile.contains(e.target)) {
+        menuProfile.classList.add("hidden");
+    }
+});
+
+
+const token = localStorage.getItem("token");
+
+const btnConnexion = document.getElementById("btnConnexion");
+const btnProfile = document.getElementById("btnProfile");
+const btnDeconnexion = document.getElementById("btnDeconnexion");
+const menuProfile = document.getElementById("menuProfile");
+
+if (token) {
+
+    btnConnexion.classList.add("hidden");
+    btnProfile.classList.remove("hidden");
+
+    const nom = localStorage.getItem("nom") || "Utilisateur";
+    const email = localStorage.getItem("email") || "";
+
+    document.getElementById("nomUtilisateur").textContent = nom;
+    document.getElementById("profileNom").textContent = nom;
+    document.getElementById("profileEmail").textContent = email;
+
+    btnDeconnexion.disabled = false;
+    btnDeconnexion.classList.remove(
+        "text-gray-400",
+        "cursor-not-allowed"
+    );
+
+    btnDeconnexion.classList.add(
+        "text-red-600",
+        "hover:bg-gray-100"
+    );
+}
+
+btnProfile?.addEventListener("click", () => {
+    menuProfile.classList.toggle("hidden");
+});
+
+btnDeconnexion?.addEventListener("click", () => {
+
+    localStorage.removeItem("token");
+    localStorage.removeItem("nom");
+    localStorage.removeItem("email");
+
+    window.location.href = "connexion.html";
+});
+
+document.addEventListener("click", (e) => {
+
+    if (
+        btnProfile &&
+        !btnProfile.contains(e.target) &&
+        !menuProfile.contains(e.target)
+    ) {
+        menuProfile.classList.add("hidden");
+    }
+
+});
+
+
