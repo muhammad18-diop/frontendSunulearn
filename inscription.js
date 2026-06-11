@@ -1,5 +1,35 @@
 const form = document.getElementById("form");
 
+
+function declencherModalErreur(messageTexte) {
+    const $errorModalElement = document.getElementById('errorSignupModal');
+    const errorMessageElement = document.getElementById("errorSignupMessage");
+    
+    if ($errorModalElement && errorMessageElement) {
+        errorMessageElement.textContent = messageTexte;
+        
+        let errorModal;
+        if (typeof Modal !== 'undefined') {
+            errorModal = new Modal($errorModalElement);
+        } else if (typeof flowbite !== 'undefined' && flowbite.Modal) {
+            errorModal = new flowbite.Modal($errorModalElement);
+        }
+
+        if (errorModal) {
+            errorModal.show();
+            
+            const btnFermer = document.getElementById("btnFermerErrorSignup");
+            btnFermer?.addEventListener("click", () => {
+                errorModal.hide();
+            });
+        } else {
+            alert(messageTexte);
+        }
+    } else {
+        alert(messageTexte);
+    }
+}
+
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -8,12 +38,19 @@ form.addEventListener("submit", async (e) => {
     const mdp = document.getElementById("password").value.trim();
 
     if (!nom || !email || !mdp) {
-        alert("Veuillez remplir tous les champs");
+        declencherModalErreur("Veuillez remplir tous les champs");
+        return;
+    }
+
+    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        declencherModalErreur("L'adresse e-mail saisie n'est pas valide");
         return;
     }
 
     if (mdp.length < 6) {
-        alert("Le mot de passe doit contenir au moins 6 caractères");
+        declencherModalErreur("Le mot de passe doit contenir au moins 6 caractères");
         return;
     }
 
@@ -33,32 +70,38 @@ form.addEventListener("submit", async (e) => {
         if (response.ok) {
             form.reset();
 
-            
             const $modalElement = document.getElementById('successModal');
             
             if ($modalElement) {
-                
-                const modal = new Modal($modalElement);
-                modal.show();
+                let modal;
+                if (typeof Modal !== 'undefined') {
+                    modal = new Modal($modalElement);
+                } else if (typeof flowbite !== 'undefined' && flowbite.Modal) {
+                    modal = new flowbite.Modal($modalElement);
+                }
 
-                
-                const btnContinuer = document.getElementById("btnContinuerModal");
-                btnContinuer?.addEventListener("click", () => {
-                    modal.hide();
+                if (modal) {
+                    modal.show();
+
+                    const btnContinuer = document.getElementById("btnContinuerModal");
+                    btnContinuer?.addEventListener("click", () => {
+                        modal.hide();
+                        window.location.href = "connexion.html";
+                    });
+                } else {
                     window.location.href = "connexion.html";
-                });
+                }
             } else {
-                
-                alert("Inscription réussie !");
                 window.location.href = "connexion.html";
             }
 
         } else {
-            alert(data.message || "Une erreur est survenue");
+    
+            declencherModalErreur(data.message || "Une erreur est survenue lors de l'inscription");
         }
 
     } catch (error) {
         console.error("Erreur :", error);
-        alert("Erreur serveur, veuillez réessayer plus tard");
+        declencherModalErreur("Erreur serveur, veuillez réessayer plus tard");
     }
 });
