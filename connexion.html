@@ -58,6 +58,31 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/
   </div>
 </section>
 
+<!-- Fenêtre Modale de Succès de Connexion -->
+<div id="successModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
+    <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+        <div class="relative p-4 text-center bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5 border dark:border-gray-700">
+            
+            <!-- Icône de cadenas ouvert ou de validation -->
+            <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 p-2 flex items-center justify-center mx-auto mb-3.5">
+                <svg aria-hidden="true" class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://w3.org">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                </svg>
+            </div>
+            
+            <!-- Message de bienvenue -->
+            <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">Ravi de vous revoir !</h3>
+            <p class="mb-4 text-sm text-gray-500 dark:text-gray-400">Votre authentification a réussi. Préparation de votre espace de travail sur SunuLearn...</p>
+            
+            <!-- Bouton d'accès -->
+            <button id="btnContinuerModal" type="button" class="w-full py-2.5 px-4 text-sm font-medium text-center text-white rounded-lg bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:focus:ring-primary-900">
+                Accéder à la plateforme
+            </button>
+        </div>
+    </div>
+</div>
+
+
 
      <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

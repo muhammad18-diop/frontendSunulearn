@@ -233,3 +233,60 @@ document.addEventListener("click", (e) => {
     }
   }
 });
+
+
+const btnConnexion = document.getElementById("btnConnexion");
+const btnProfile = document.getElementById("btnProfile");
+const btnDeconnexion = document.getElementById("btnDeconnexion");
+const menuProfile = document.getElementById("menuProfile");
+
+const token = localStorage.getItem("token");
+
+if (token) {
+  
+    if (btnConnexion) btnConnexion.classList.add("hidden");
+    if (btnProfile) btnProfile.classList.remove("hidden");
+
+    const nom = localStorage.getItem("nom") || "Utilisateur";
+    const email = localStorage.getItem("email") || "";
+
+    
+    const elNom = document.getElementById("nomUtilisateur");
+    const elProfNom = document.getElementById("profileNom");
+    const elProfEmail = document.getElementById("profileEmail");
+
+    if (elNom) elNom.textContent = nom;
+    if (elProfNom) elProfNom.textContent = nom;
+    if (elProfEmail) elProfEmail.textContent = email;
+
+    
+    if (btnDeconnexion) {
+        btnDeconnexion.disabled = false;
+        btnDeconnexion.classList.remove("text-gray-400", "cursor-not-allowed");
+        btnDeconnexion.classList.add("text-red-600", "hover:bg-gray-100");
+    }
+}
+
+
+btnProfile?.addEventListener("click", (e) => {
+    e.stopPropagation(); 
+    menuProfile?.classList.toggle("hidden");
+});
+
+btnDeconnexion?.addEventListener("click", () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("nom");
+    localStorage.removeItem("email");
+    window.location.replace("connexion.html");
+});
+
+
+document.addEventListener("click", (e) => {
+    if (
+        btnProfile && menuProfile &&
+        !btnProfile.contains(e.target) &&
+        !menuProfile.contains(e.target)
+    ) {
+        menuProfile.classList.add("hidden");
+    }
+});

@@ -18,13 +18,37 @@ form.addEventListener("submit", async (e) => {
         const data = await response.json();
 
         if (response.ok) {
-            alert("Connexion réussie");
-
+            
             localStorage.setItem("token", data.token);
             localStorage.setItem("nom", data.user.name);
             localStorage.setItem("email", data.user.email);
 
-            window.location.replace("index.html");
+            
+            const $modalElement = document.getElementById('successModal');
+            
+            if ($modalElement) {
+                let modal;
+                if (typeof Modal !== 'undefined') {
+                    modal = new Modal($modalElement);
+                } else if (typeof flowbite !== 'undefined' && flowbite.Modal) {
+                    modal = new flowbite.Modal($modalElement);
+                }
+
+                if (modal) {
+                    modal.show();
+
+                    const btnContinuer = document.getElementById("btnContinuerModal");
+                    btnContinuer?.addEventListener("click", () => {
+                        modal.hide();
+                        window.location.replace("index.html"); 
+                    });
+                } else {
+                    window.location.replace("index.html");
+                }
+            } else {
+                alert("Connexion réussie");
+                window.location.replace("index.html");
+            }
         } else {
             alert(data.message);
         }

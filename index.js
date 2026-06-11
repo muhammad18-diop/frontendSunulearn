@@ -31,27 +31,26 @@ async function cours() {
     }
 }
 
-// Lancement du chargement des cours
+
 cours();
 
-// 2. Ciblage unique des éléments de l'interface utilisateur
+
 const btnConnexion = document.getElementById("btnConnexion");
 const btnProfile = document.getElementById("btnProfile");
 const btnDeconnexion = document.getElementById("btnDeconnexion");
 const menuProfile = document.getElementById("menuProfile");
 
-// 3. Récupération et vérification du statut de connexion (Token)
 const token = localStorage.getItem("token");
 
 if (token) {
-    // Masquer la connexion, afficher le profil
+  
     if (btnConnexion) btnConnexion.classList.add("hidden");
     if (btnProfile) btnProfile.classList.remove("hidden");
 
     const nom = localStorage.getItem("nom") || "Utilisateur";
     const email = localStorage.getItem("email") || "";
 
-    // Remplissage des blocs de texte du profil
+    
     const elNom = document.getElementById("nomUtilisateur");
     const elProfNom = document.getElementById("profileNom");
     const elProfEmail = document.getElementById("profileEmail");
@@ -60,7 +59,7 @@ if (token) {
     if (elProfNom) elProfNom.textContent = nom;
     if (elProfEmail) elProfEmail.textContent = email;
 
-    // Activation du bouton déconnexion
+    
     if (btnDeconnexion) {
         btnDeconnexion.disabled = false;
         btnDeconnexion.classList.remove("text-gray-400", "cursor-not-allowed");
@@ -68,9 +67,9 @@ if (token) {
     }
 }
 
-// 4. Événements et interactions de l'interface (Menu déroulant & Déconnexion)
+
 btnProfile?.addEventListener("click", (e) => {
-    e.stopPropagation(); // Évite la fermeture immédiate via le clic document
+    e.stopPropagation(); 
     menuProfile?.classList.toggle("hidden");
 });
 
@@ -78,10 +77,10 @@ btnDeconnexion?.addEventListener("click", () => {
     localStorage.removeItem("token");
     localStorage.removeItem("nom");
     localStorage.removeItem("email");
-    window.location.href = "connexion.html";
+    window.location.replace("index.html");
 });
 
-// Fermeture automatique du menu au clic à l'extérieur
+
 document.addEventListener("click", (e) => {
     if (
         btnProfile && menuProfile &&
