@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"><link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link
+  rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  
+  <!-- Flowbite CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet"/>
+  <link rel="stylesheet"href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+</head>
+<body>
+
+    <div class="min-h-screen bg-gray-100">
+
+    <!-- SIDEBAR -->
+    <aside class="fixed top-0 left-0 w-64 h-screen bg-white shadow-lg">
+
+        <div class="p-6 border-b">
+            <h1 class="text-2xl font-bold text-indigo-600">
+                Admin Panel
+            </h1>
+        </div>
+
+        <nav class="mt-6 space-y-1">
+
+            <!-- Dashboard -->
+            <a href="dashboard.html"
+               class="flex items-center gap-3 px-6 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600">
+
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M3 13h4v7H3v-7zm6-10h4v17H9V3zm6 6h4v11h-4V9z"/>
+                </svg>
+
+                Dashboard
+            </a>
+
+            <!-- Users -->
+            <a href="usersDashboard.html"
+               class="flex items-center gap-3 px-6 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600">
+
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 10a4 4 0 100-8 4 4 0 000 8zm-7 9a7 7 0 0114 0H3z"/>
+                </svg>
+
+                Utilisateurs
+            </a>
+
+            <!-- Cours -->
+            <a href="coursDashboard.html"
+               class="flex items-center gap-3 px-6 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600">
+
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M4 4a2 2 0 012-2h10v16H6a2 2 0 01-2-2V4z"/>
+                </svg>
+
+                Cours
+            </a>
+
+            <!-- Quiz -->
+            <a href="#"
+               class="flex items-center gap-3 px-6 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600">
+
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2zM6 7h8v2H6V7z"/>
+                </svg>
+
+                Quiz
+            </a>
+
+            <!-- Paiements -->
+            <a href="#"
+               class="flex items-center gap-3 px-6 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600">
+
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M4 4h12a2 2 0 012 2v2H2V6a2 2 0 012-2z"/>
+                    <path d="M2 10h16v6a2 2 0 01-2 2H4a2 2 0 01-2-2v-6z"/>
+                </svg>
+
+                Paiements
+            </a>
+
+            <!-- Déconnexion -->
+            <a href="#"
+               class="flex items-center gap-3 px-6 py-3 text-red-500 hover:bg-red-50">
+
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M3 10a1 1 0 011-1h7V7l5 3-5 3v-2H4a1 1 0 01-1-1z"/>
+                </svg>
+
+                Déconnexion
+            </a>
+
+        </nav>
+    </aside>
+   <main class="max-w-xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md mt-10">
+    <h2 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white text-center">
+        <i class="fa-solid fa-file-pdf text-red-600 mr-2"></i>Ajouter un cours
+    </h2>
+    <p class="text-sm text-gray-500 dark:text-gray-400 text-center mb-6">
+        Téléversez un document PDF et son image d'illustration.
+    </p>
+    
+    <form id="form-ajout-cours" class="space-y-5">
+        
+        <div>
+            <label desert for="titre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Titre du cours</label>
+            <input type="text" id="titre" required placeholder="Ex: Introduction à JavaScript" class="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-primary-500 focus:border-primary-500">
+        </div>
+
+        
+        <div>
+            <label for="categorie" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Catégorie</label>
+            <select id="categorie" class="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                <option value="Tous">Tous</option>
+                <option value="Math">Math</option>
+                <option value="Informatique">Psychotechnique</option>
+                <option value="Physique">Physique</option>
+                <option value="Physique">Dissertation</option>
+                <option value="Physique">Droit</option>
+            </select>
+        </div>
+
+        <
+        <div>
+            <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+            <textarea id="description" rows="5" required placeholder="Description du cours..." class="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
+        </div>
+
+        
+        <div>
+            <label for="imageFile" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image du cours</label>
+            <input type="file" id="imageFile" accept="image/*" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
+        </div>
+
+        
+        <div>
+            <label for="pdfFile" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Document PDF</label>
+            <input type="file" id="pdfFile" accept="application/pdf" required class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
+        </div>
+
+        
+        <button type="submit" id="btnSoumettre" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-3 text-center dark:bg-primary-600 dark:hover:bg-primary-700 flex items-center justify-center gap-2">
+            <span id="texteBouton">Mettre le cours en ligne</span>
+        </button>
+    </form>
+</main>
+
+
+<div id="courseSuccessModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full md:inset-0">
+    <div class="relative p-4 w-full max-w-md my-auto">
+        <div class="relative p-4 text-center bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5 border dark:border-gray-700">
+            
+            <div class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 p-2 flex items-center justify-center mx-auto mb-3.5">
+                <svg aria-hidden="true" class="w-8 h-8 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://w3.org">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+            </div>
+            
+            <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">Cours publié avec succès !</h3>
+            <p class="mb-4 text-sm text-gray-500 dark:text-gray-400">Le document PDF et son image d'illustration ont été téléversés. Les informations sont maintenant enregistrées dans PostgreSQL.</p>
+            
+            <button id="btnFermerSuccessCours" type="button" class="w-full py-2.5 px-4 text-sm font-medium text-center text-white rounded-lg bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300">
+                Continuer
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <!-- Flowbite JS -->
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="coursDashboard.js"></script>
+
+<script>
+    AOS.init();
+</script>
+</body>
+</html>

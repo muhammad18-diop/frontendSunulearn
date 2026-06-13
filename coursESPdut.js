@@ -21,7 +21,7 @@ function genererHTMLCours(coursListe) {
     return html;
 }
 
-// 2. RECUPÉRATION ET FILTRAGE DYNAMIQUE DES COURS
+
 async function piloterAffichageCours(categorieFiltre = "Tous") {
     try {
         const response = await fetch("coursESPDUT.json");
@@ -32,7 +32,7 @@ async function piloterAffichageCours(categorieFiltre = "Tous") {
         if (affiche) {
             affiche.innerHTML = "";
             
-            // Filtrage intelligent
+            
             const coursFiltrés = (categorieFiltre === "Tous") 
                 ? data 
                 : data.filter(p => p.categorie === categorieFiltre);
@@ -44,16 +44,16 @@ async function piloterAffichageCours(categorieFiltre = "Tous") {
     }
 }
 
-// Chargement initial au démarrage
+
 piloterAffichageCours();
 
-// 3. ECOUTEURS D'ÉVÉNEMENTS POUR LES FILTRES DE MATIÈRES
+
 document.getElementById("tous")?.addEventListener("click", () => piloterAffichageCours("Tous"));
 document.getElementById("math")?.addEventListener("click", () => piloterAffichageCours("Maths"));
 document.getElementById("français")?.addEventListener("click", () => piloterAffichageCours("français"));
 document.getElementById("pc")?.addEventListener("click", () => piloterAffichageCours("PC"));
 
-// 4. SÉCURISATION ET INTERCEPTION DES CLICS SUR LES LIENS DE DEVOIRS ET COURS
+
 document.addEventListener("click", (e) => {
     const lien = e.target.closest(".lien");
     if (!lien) return;
@@ -65,7 +65,6 @@ document.addEventListener("click", (e) => {
     }
 });
 
-// 5. ETAT DE L'INTERFACE UTILISATEUR (BARRE DE NAVIGATION)
 const btnConnexion = document.getElementById("btnConnexion");
 const btnProfile = document.getElementById("btnProfile");
 const btnDeconnexion = document.getElementById("btnDeconnexion");
@@ -100,14 +99,14 @@ btnProfile?.addEventListener("click", (e) => {
     menuProfile?.classList.toggle("hidden");
 });
 
-// Fermeture automatique du menu profil au clic extérieur
+
 document.addEventListener("click", (e) => {
     if (btnProfile && menuProfile && !btnProfile.contains(e.target) && !menuProfile.contains(e.target)) {
         menuProfile.classList.add("hidden");
     }
 });
 
-// 6. FIX ET FINALISATION COMPLÈTE DE LA MODAL DE DÉCONNEXION FLOWBITE
+
 btnDeconnexion?.addEventListener("click", (e) => {
     e.stopPropagation(); 
     
@@ -126,13 +125,13 @@ btnDeconnexion?.addEventListener("click", (e) => {
             menuProfile?.classList.add("hidden");
             logoutModal.show();
 
-            // Gestion de la fermeture / annulation
+            
             const boutonsAnnuler = document.querySelectorAll("[id='btnAnnulerDeconnexion']");
             boutonsAnnuler.forEach(btn => {
                 btn.addEventListener("click", () => logoutModal.hide());
             });
 
-            // Confirmation finale de déconnexion
+            
             document.getElementById("btnConfirmerDeconnexion")?.addEventListener("click", () => {
                 logoutModal.hide();
                 localStorage.removeItem("token");

@@ -32,6 +32,10 @@ function declencherModalErreur(messageTexte) {
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    const btn = document.getElementById("signupBtn")
+    if(btn.disabled) return
+    btn.disabled = true;
+    btn.innerText = "Inscription en cours..."
 
     const nom = document.getElementById("nom").value.trim();
     const email = document.getElementById("email").value.trim();

@@ -2,6 +2,10 @@ const form = document.getElementById("form-connexion");
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    const btn = document.getElementById("btnLogin")
+    if(btn.disabled) return
+    btn.disabled = true;
+    btn.innerText = "Connexion en cours..."
 
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -22,6 +26,7 @@ form.addEventListener("submit", async (e) => {
             localStorage.setItem("token", data.token);
             localStorage.setItem("nom", data.user.name);
             localStorage.setItem("email", data.user.email);
+            localStorage.setItem("role", data.user.role)
 
             
             const $modalElement = document.getElementById('successModal');
