@@ -1,6 +1,13 @@
 
 async function chargerStats() {
     try {
+
+        let role = localStorage.getItem("role");
+        if (role !== "admin") {
+            window.location.href = "404.html";
+            return;
+        }
+
         const token = localStorage.getItem("token");
 
         const response = await fetch("https://backendsunulearn-3.onrender.com/api/dashboard/stats", {
@@ -15,18 +22,17 @@ async function chargerStats() {
         }
 
         const data = await response.json();
-        console.log("Stats:", data);
 
         if (data && data.stats) {
             document.getElementById("totalUsers").textContent = data.stats.totalUsers ?? 0;
             document.getElementById("activeUsers").textContent = data.stats.activeUsers ?? 0;
         }
 
+        document.body.style.display = "block"; 
+
     } catch (error) {
         console.error("Erreur stats :", error);
-
-        document.getElementById("totalUsers").textContent = "--";
-        document.getElementById("activeUsers").textContent = "--";
+        window.location.href = "404.html"; 
     }
 }
 
