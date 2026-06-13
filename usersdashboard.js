@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000/api/utilisateurs";
+const API_URL = "https://backendsunulearn-3.onrender.com/api/utilisateurs";
 
 async function chargerUsers() {
     try {

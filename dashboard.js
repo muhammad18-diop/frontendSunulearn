@@ -3,7 +3,7 @@ async function chargerStats() {
     try {
         const token = localStorage.getItem("token");
 
-        const response = await fetch("http://localhost:3000/api/dashboard/stats", {
+        const response = await fetch("https://backendsunulearn-3.onrender.com/api/dashboard/stats", {
             headers: {
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "application/json"
