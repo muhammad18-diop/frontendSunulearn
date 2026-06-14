@@ -24,7 +24,7 @@ function genererHTMLCours(coursListe) {
 
 async function piloterAffichageCours(categorieFiltre = "Tous") {
     try {
-        const response = await fetch("coursESPDUT.json");
+        const response = await fetch("ipsl.json");
         if (!response.ok) throw new Error(`Erreur HTTP : ${response.status}`);
         
         const data = await response.json();

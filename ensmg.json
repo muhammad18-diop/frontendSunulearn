@@ -3,7 +3,7 @@
         "id": 1,
         "titre": "Cours de français Roman",
         "description": "Cours complet de français pour la classe de terminale qui inclut toutes les fonctions du roman",
-        "image": "images/esp.png",
+        "image": "images/ensmg.jpg",
         "lien": "cours-esp-dut/roman2.pdf",
         "categorie": "français",
         "distinction": "plus suivi"
@@ -12,7 +12,7 @@
         "id": 2,
         "titre": "Cours de français Poésie",
         "description": "Cours complet de français pour la classe de terminale qui inclut toutes les fonctions de la poésie",
-        "image": "images/esp.png",
+       "image": "images/ensmg.jpg",
         "lien": "cours-esp-dut/poésie2.pdf",
         "categorie": "français",
         "distinction": "plus suivi"
@@ -21,7 +21,7 @@
         "id": 3,
         "titre": "Cours de français Théatre",
         "description": "Cours complet de français pour la classe de terminale qui inclut toutes les fonctions du thêatre",
-        "image": "images/esp.png",
+       "image": "images/ensmg.jpg",
         "lien": "cours-esp-dut/theatre2.pdf",
         "categorie": "français",
         "distinction": "plus suivi"
@@ -30,7 +30,7 @@
         "id": 4,
         "titre": "Cours de Math Fonctions",
         "description": "Cours complet de Math en terminale S pour la classe de terminale sur les fonctions",
-        "image": "images/esp.png",
+       "image": "images/ensmg.jpg",
         "lien": "cours-esp-dut/Chapitre1Fonctions.pdf",
         "categorie": "Maths",
         "distinction": "plus suivi"
@@ -39,7 +39,7 @@
         "id": 12,
         "titre": "Cours de Math Primitives ",
         "description": "Cours complet de Math pour la classe de terminale S sur les primitives",
-        "image": "images/esp.png",
+       "image": "images/ensmg.jpg",
         "lien": "cours-esp-dut/Chapitre_2_Primitives.pdf",
         "categorie": "Maths",
         "distinction": "plus suivi"
@@ -48,7 +48,7 @@
         "id": 8,
         "titre": "Cours de Math Fonction logarithme népérien",
         "description": "Cours complet de Math pour la classe de terminale S sur les fonctions ln",
-        "image": "images/esp.png",
+   "image": "images/ensmg.jpg",
         "lien": "cours-esp-dut/Chapitre_3_Logarithme.pdf",
         "categorie": "Maths",
         "distinction": "plus suivi"
@@ -57,7 +57,7 @@
         "id": 7,
         "titre": "Cours de Math Fonction Exponentielle",
         "description": "Cours complet de Math pour la classe de terminale S sur les fonctions Exponentielle",
-        "image": "images/esp.png",
+       "image": "images/ensmg.jpg",
         "lien": "cours-esp-dut/Chapitre_4_Exponentielle.pdf",
         "categorie": "Maths",
         "distinction": "plus suivi"
@@ -66,7 +66,7 @@
         "id": 10,
         "titre": "Cours Suites Numériques",
         "description": "Cours complet de Math pour la classe de terminale S sur les suites numériques",
-        "image": "images/esp.png",
+   "image": "images/ensmg.jpg",
         "lien": "cours-esp-dut/Chapitre_5_Suites.pdf",
         "categorie": "Maths",
         "distinction": "plus suivi"
@@ -76,7 +76,7 @@
         "id": 9,
         "titre": "Cours de Math Intégral",
         "description": "Cours complet de Math pour la classe de terminale S sur les intégrals",
-        "image": "images/esp.png",
+        "image": "images/ensmg.jpg",
         "lien": "cours-esp-dut/Chapitre_6_Calcul_Integral.pdf",
         "categorie": "Maths",
         "distinction": "plus suivi"
@@ -85,7 +85,7 @@
         "id": 12,
         "titre": "Cours de Math Equations différentielles ",
         "description": "Cours complet de Math pour la classe de terminale S sur les équations différentielles",
-        "image": "images/esp.png",
+      "image": "images/ensmg.jpg",
         "lien": "cours-esp-dut/Chapitre_7_Equations_Differentielles.pdf",
         "categorie": "Maths",
         "distinction": "plus suivi"
@@ -94,7 +94,7 @@
         "id": 12,
         "titre": "Cours de Math Statistiques a deux variables ",
         "description": "Cours complet de Math pour la classe de terminale S sur les Statistiques à deux variables",
-        "image": "images/esp.png",
+       "image": "images/ensmg.jpg",
         "lien": "cours-esp-dut/Chapitre_8_Statistiques.pdf",
         "categorie": "Maths",
         "distinction": "plus suivi"
@@ -103,7 +103,7 @@
         "id": 12,
         "titre": "Cours de Math Dénombrement ",
         "description": "Cours complet de Math pour la classe de terminale S sur le dénombrement",
-        "image": "images/esp.png",
+       "image": "images/ensmg.jpg",
         "lien": "cours-esp-dut/Chapitre_9_Denombrement.pdf",
         "categorie": "Maths",
         "distinction": "plus suivi"
@@ -112,7 +112,7 @@
         "id": 12,
         "titre": "Cours de Math Probabillités ",
         "description": "Cours complet de Math pour la classe de terminale S sur les probabilités",
-        "image": "images/esp.png",
+      "image": "images/ensmg.jpg",
         "lien": "cours-esp-dut/Chapitre_10_Probabilites.pdf",
         "categorie": "Maths",
         "distinction": "plus suivi"
@@ -121,7 +121,7 @@
         "id": 11,
         "titre": "Cours de Nombres complexes",
         "description": "Cours complet de Math pour la classe de terminale S sur les nombres complexes",
-        "image": "images/esp.png",
+     "image": "images/ensmg.jpg",
         "lien": "cours-esp-dut/Chapitre_11_Nombres_Complexes.pdf",
         "categorie": "Maths",
         "distinction": "plus suivi"
@@ -130,7 +130,7 @@
         "id": 12,
         "titre": "Cours de Math Similutudes directes ",
         "description": "Cours complet de Math pour la classe de terminale S sur Similutudes directes",
-        "image": "images/esp.png",
+  "image": "images/ensmg.jpg",
         "lien": "cours-esp-dut/Chapitre_12_Similitudes.pdf",
         "categorie": "Maths",
         "distinction": "plus suivi"
@@ -140,7 +140,7 @@
         "id": 13,
         "titre": "Cours complet de Physique Chimie pour la classe de terminale",
         "description": "Programme complet de PC pour la classe de terminale S ",
-        "image": "images/esp.png",
+        "image": "images/ensmg.jpg",
         "lien": "cours-esp-dut/pcComplet.pdf",
         "categorie": "PC",
         "distinction": "plus suivi"
