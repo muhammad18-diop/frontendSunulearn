@@ -63,7 +63,12 @@ async function compterCours() {
 const fichiers = [
     "enadirectA.json",
     "enadirectB.json",
-    "coursESPDUT.json"
+    "coursESPDUT.json",
+    "ept.json",
+    "uam.json",
+    "ipsl.json",
+    "ensgm.json",
+    "ensa.json"
 ];
 
 let tousLesCours = [];
