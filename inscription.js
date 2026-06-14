@@ -107,5 +107,8 @@ form.addEventListener("submit", async (e) => {
     } catch (error) {
         console.error("Erreur :", error);
         declencherModalErreur("Erreur serveur, veuillez réessayer plus tard");
+    }finally{
+        btn.disabled = false;
+        btn.innerText = "S'inscrire"
     }
 });

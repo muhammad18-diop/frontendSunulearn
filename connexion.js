@@ -89,5 +89,8 @@ form.addEventListener("submit", async (e) => {
 
     } catch (error) {
         console.log("Erreur :", error);
+    }finally{
+        btn.disabled = false;
+        btn.textContent = "Se connecter"
     }
 });
