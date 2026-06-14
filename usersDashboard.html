@@ -1,274 +1,208 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- AJOUT : La classe 'dark' force le mode sombre global de Tailwind et Flowbite -->
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-     <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"><link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-  <link
-  rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  
-  <!-- Flowbite CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet"/>
-  <link rel="stylesheet"href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+    <title>Gestion des Utilisateurs - Admin Panel</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AJOUT : Configuration requise pour activer le mode sombre basé sur la classe 'dark' -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <!-- Flowbite CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
 </head>
-<body>
-    
 
+<!-- MODIFICATION : Couleur de fond de page et de texte adaptative -->
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-200">
 
+<div class="min-h-screen">
 
+    <!-- SIDEBAR : Arrière-plan, bordures et états de survol adaptés au mode sombre -->
+    <aside class="fixed top-0 left-0 w-64 h-screen bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 shadow-lg">
 
-
-
-<div class="min-h-screen bg-gray-100">
-
-    
-    <aside class="fixed top-0 left-0 w-64 h-screen bg-white shadow-lg">
-
-        <div class="p-6 border-b">
-            <h1 class="text-2xl font-bold text-indigo-600">
+        <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+            <h1 class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
                 Admin Panel
             </h1>
         </div>
 
         <nav class="mt-6 space-y-1">
-
-            
             <a href="dashboard.html"
-               class="flex items-center gap-3 px-6 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600">
-
+               class="flex items-center gap-3 px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M3 13h4v7H3v-7zm6-10h4v17H9V3zm6 6h4v11h-4V9z"/>
                 </svg>
-
                 Dashboard
             </a>
 
             <!-- Users -->
             <a href="usersDashboard.html"
-               class="flex items-center gap-3 px-6 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600">
-
+               class="flex items-center gap-3 px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M10 10a4 4 0 100-8 4 4 0 000 8zm-7 9a7 7 0 0114 0H3z"/>
                 </svg>
-
                 Utilisateurs
             </a>
 
             <!-- Cours -->
             <a href="coursDashboard.html"
-               class="flex items-center gap-3 px-6 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600">
-
+               class="flex items-center gap-3 px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M4 4a2 2 0 012-2h10v16H6a2 2 0 01-2-2V4z"/>
                 </svg>
-
                 Cours
             </a>
 
-        
-            <a href="#"
-               class="flex items-center gap-3 px-6 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600">
-
+            <a href="notificationsDashboard.html"
+               class="flex items-center gap-3 px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2zM6 7h8v2H6V7z"/>
                 </svg>
+                Notifications
+            </a>
 
+            <a href="#"
+               class="flex items-center gap-3 px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2zM6 7h8v2H6V7z"/>
+                </svg>
                 Quiz
             </a>
 
-            
             <a href="#"
-               class="flex items-center gap-3 px-6 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600">
-
+               class="flex items-center gap-3 px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M4 4h12a2 2 0 012 2v2H2V6a2 2 0 012-2z"/>
                     <path d="M2 10h16v6a2 2 0 01-2 2H4a2 2 0 01-2-2v-6z"/>
                 </svg>
-
                 Paiements
             </a>
 
-            
             <a href="#"
-               class="flex items-center gap-3 px-6 py-3 text-red-500 hover:bg-red-50">
-
+               class="flex items-center gap-3 px-6 py-3 text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M3 10a1 1 0 011-1h7V7l5 3-5 3v-2H4a1 1 0 01-1-1z"/>
                 </svg>
-
                 Déconnexion
             </a>
-
         </nav>
     </aside>
 
-    <!-- Main -->
+    <!-- Main Content -->
     <main class="ml-64 p-8">
 
-        <h2 class="text-3xl font-bold mb-8">
+        <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
             Tableau de bord
         </h2>
 
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+        <!-- Conteneur Principal de la Table -->
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700">
 
-    <div class="flex flex-col md:flex-row justify-between items-center p-6 border-b">
+            <!-- En-tête de section et Recherche -->
+            <div class="flex flex-col md:flex-row justify-between items-center p-6 border-b border-gray-200 dark:border-gray-700">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white">
+                        Gestion des utilisateurs
+                    </h2>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">
+                        Liste des utilisateurs inscrits
+                    </p>
+                </div>
 
-        <div>
-            <h2 class="text-2xl font-bold text-gray-800">
-                Gestion des utilisateurs
-            </h2>
+                <div class="flex gap-3 mt-4 md:mt-0">
+                    <!-- Champ de recherche stylisé Mode Sombre -->
+                    <input
+                        type="text"
+                        id="searchUser"
+                        placeholder="Rechercher un utilisateur..."
+                        class="border rounded-lg px-4 py-2 text-sm bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+                    >
+                    <!-- Bouton Rechercher Indigo Moderne -->
+                    <button
+                        class="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition shadow-sm"
+                    >
+                        Rechercher
+                    </button>
+                </div>
+            </div>
 
-            <p class="text-gray-500 text-sm mt-1">
-                Liste des utilisateurs inscrits
-            </p>
-        </div>
+            <!-- Grille des statistiques intermédiaires -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-6 bg-gray-50 dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-700">
+                
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow border border-gray-100 dark:border-gray-700">
+                    <h3 class="text-gray-500 dark:text-gray-400 text-sm font-medium">
+                        Total utilisateurs
+                    </h3>
+                    <p id="totalUsers" class="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mt-2">
+                        0
+                    </p>
+                </div>
 
-        <div class="flex gap-3 mt-4 md:mt-0">
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow border border-gray-100 dark:border-gray-700">
+                    <h3 class="text-gray-500 dark:text-gray-400 text-sm font-medium">
+                        Utilisateurs actifs
+                    </h3>
+                    <p id="activeUsers" class="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mt-2">
+                        0
+                    </p>
+                </div>
 
-            <input
-                type="text"
-                id="searchUser"
-                placeholder="Rechercher un utilisateur..."
-                class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow border border-gray-100 dark:border-gray-700">
+                    <h3 class="text-gray-500 dark:text-gray-400 text-sm font-medium">
+                        Administrateurs
+                    </h3>
+                    <p id="adminUsers" class="text-3xl font-bold text-purple-600 dark:text-purple-400 mt-2">
+                        1
+                    </p>
+                </div>
 
-            <button
-                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
-            >
-                Rechercher
-            </button>
+            </div>
 
-        </div>
+            <!-- Tableau des données utilisateur -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 border-b border-gray-200 dark:border-gray-600">
+                        <tr>
+                            <th class="px-6 py-3">Nom</th>
+                            <th class="px-6 py-3">Email</th>
+                            <th class="px-6 py-3">Rôle</th>
+                            <th class="px-6 py-3">Status</th>
+                            <th class="px-6 py-3">Date</th>
+                            <th class="px-6 py-3 text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <!-- Les lignes dynamiques injectées par usersdashboard.js hériteront du style sans survol blanc -->
+                    <tbody id="usersTable" class="divide-y divide-gray-200 dark:divide-gray-700"></tbody>
+                </table>
+            </div>
 
-    </div>
+            <!-- Pagination adaptée aux directives Flowbite Dark -->
+            <div id="pagination" class="flex justify-center items-center gap-2 p-6 border-t border-gray-200 dark:border-gray-700">
+                
+                <button class="px-3 py-1.5 text-sm font-medium rounded-lg border text-gray-500 bg-white border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white transition">
+                    &larr;
+                </button>
 
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-6 bg-gray-50">
-
-        <div class="bg-white p-4 rounded-lg shadow">
-            <h3 class="text-gray-500 text-sm">
-                Total utilisateurs
-            </h3>
-
-            <p
-                id="totalUsers"
-                class="text-3xl font-bold text-blue-600 mt-2"
-            >
-                0
-            </p>
-        </div>
-
-        <div class="bg-white p-4 rounded-lg shadow">
-            <h3 class="text-gray-500 text-sm">
-                Utilisateurs actifs
-            </h3>
-
-            <p
-                id="activeUsers"
-                class="text-3xl font-bold text-green-600 mt-2"
-            >
-                0
-            </p>
-        </div>
-
-        <div class="bg-white p-4 rounded-lg shadow">
-            <h3 class="text-gray-500 text-sm">
-                Administrateurs
-            </h3>
-
-            <p
-                id="adminUsers"
-                class="text-3xl font-bold text-purple-600 mt-2"
-            >
-                0
-            </p>
-        </div>
-
-    </div>
-
-    
-    <div class="overflow-x-auto">
-
-        <table class="w-full text-sm" >
-    <thead class="bg-gray-100">
-        <tr>
-            <th>Nom</th>
-            <th>Email</th>
-            <th>Rôle</th>
-            <th>Status</th>
-            <th>Date</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-
-    <tbody id="usersTable"></tbody>
-</table>
-
-    </div>
-
-    
-    <div
-        id="pagination"
-        class="flex justify-center items-center gap-2 p-6 border-t"
-    >
-
-        <button
-            class="px-4 py-2 border rounded-lg hover:bg-gray-100"
-        >
-            ←
-        </button>
-
-        <button
-            class="px-4 py-2 bg-blue-600 text-white rounded-lg"
-        >
-            1
-        </button>
-
-        <button
-            class="px-4 py-2 border rounded-lg hover:bg-gray-100"
-        >
-            2
-        </button>
-
-        <button
-            class="px-4 py-2 border rounded-lg hover:bg-gray-100"
-        >
-            3
-        </button>
-
-        <button
-            class="px-4 py-2 border rounded-lg hover:bg-gray-100"
-        >
-            →
-        </button>
-
-    </div>
+                <button class="px-3 py-1.5 text-sm font-medium rounded-lg bg-indigo-600 text-white dark:bg-indigo-500 shadow-sm">
+                    1
+                </button>
 
 </div>
-
+        </div>
     </main>
-
 </div>
-
-
-
-
-
-
-      <!-- Flowbite JS -->
-<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="usersdashboard.js"></script>
 <script src="dashboard.js"></script>
-
-<script>
-    AOS.init();
-</script>
 </body>
 </html>
