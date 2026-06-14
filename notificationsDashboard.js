@@ -35,3 +35,6 @@ result.textContent = data.message;
       console.error(error);
     }
   });
+
+  const a = 5
+  const b = 6
