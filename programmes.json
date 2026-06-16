@@ -44,7 +44,15 @@
     "categorie": "Militaire",
     "distinction": "plus suivi"
   },
-  
+  {
+    "id": 7,
+    "titre": "Ecole Nationale de Formation Judiciaire section Greffes",
+    "description": "Cours complet du concours d'entrée au CFJ section Greffes",
+    "image": "images/cfj.png",
+    "lien": "greffe.html",
+    "categorie": "Administration",
+    "distinction": "plus suivi"
+  },
   {
     "id": 6,
     "titre": "Ecole Nationale de la Gendarmerie",
