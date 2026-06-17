@@ -58,7 +58,9 @@ const fichiers = [
     "enadirectB.json",
     "coursESPDUT.json",
     "ept.json",
-    "ipsl.json"
+    "ipsl.json",
+    "greffe.json",
+    "educateur.json"
 ];
 
 let tousLesCours = [];
