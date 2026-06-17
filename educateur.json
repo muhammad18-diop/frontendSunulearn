@@ -1,0 +1,165 @@
+[
+
+   
+    {
+        
+        "id": 1,
+        "titre": "Cours La Education, Socialisation et développement",
+        "description": "Cours complet sur la  Education, Socialisation et développement concours CFJ éducateur spécialisé",
+        "image": "images/cfj.png",
+        "lien": "educateur/education-socialisation.pdf",
+        "categorie": "CG",
+        "distinction": "plus suivi"
+    }, 
+    {
+        
+        "id": 2,
+        "titre": "Cours Les Théories et courants éducatifs",
+        "description": "Cours complet sur les théories et courants éducatifs concours CFJ éducateur spécialisé",
+        "image": "images/cfj.png",
+        "lien": "educateur/theorie.pdf",
+        "categorie": "CG",
+        "distinction": "plus suivi"
+    },{
+        
+        "id": 3,
+        "titre": "Cours Le sytéme éducatif Sénégalais",
+        "description": "Cours complet sur le systéme éducatif sénégalais concours CFJ éducateur spécialisé",
+        "image": "images/cfj.png",
+        "lien": "educateur/systeme educatif.pdf",
+        "categorie": "CG",
+        "distinction": "plus suivi"
+    },
+    {
+        
+        "id": 4,
+        "titre": "Cours Role et Posture de l'éducateur spécialisé",
+        "description": "Cours complet sur le role et la posture de léducateur spécialisé concours CFJ éducateur spécialisé",
+        "image": "images/cfj.png",
+        "lien": "educateur/role et posture.pdf",
+        "categorie": "CG",
+        "distinction": "plus suivi"
+    },
+    {
+        
+        "id": 5,
+        "titre": "Cours Développement de l'enfant et de l'adolescent",
+        "description": "Cours complet sur le développement de l'enfant et de l'adolescent concours CFJ éducateur spécialisé",
+        "image": "images/cfj.png",
+        "lien": "educateur/developpement enfant-ado.pdf",
+        "categorie": "CG",
+        "distinction": "plus suivi"
+    },
+    {
+        
+        "id": 6,
+        "titre": "Cours Besions, motivation et comportement",
+        "description": "Cours complet sur besions, motivation et comportement concours CFJ éducateur spécialisé",
+        "image": "images/cfj.png",
+        "lien": "educateur/besions-motivation-comportement.pdf",
+        "categorie": "CG",
+        "distinction": "plus suivi"
+    },
+    {
+        
+        "id": 7,
+        "titre": "Cours Psychologie Sociale",
+        "description": "Cours complet sur la psychologie sociale concours CFJ éducateur spécialisé",
+        "image": "images/cfj.png",
+        "lien": "educateur/psychologie sociale.pdf",
+        "categorie": "CG",
+        "distinction": "plus suivi"
+    },
+    {
+        
+        "id": 8,
+        "titre": "Cours Relation d'aide et de communication",
+        "description": "Cours complet sur la  relation d'aide et de communication concours CFJ éducateur spécialisé",
+        "image": "images/cfj.png",
+        "lien": "educateur/relation aide.pdf",
+        "categorie": "CG",
+        "distinction": "plus suivi"
+    },
+    {
+        
+        "id": 9,
+        "titre": "Cours Intervention Educative",
+        "description": "Cours complet sur l'intervention éducative concours CFJ éducateur spécialisé",
+        "image": "images/cfj.png",
+        "lien": "educateur/intervation educative.pdf",
+        "categorie": "CG",
+        "distinction": "plus suivi"
+    },
+    {
+        
+        "id": 10,
+        "titre": "Cours Méthodes et Techniques d'Animations",
+        "description": "Cours complet sur les méthodes et techniques d'animation concours CFJ éducateur spécialisé",
+        "image": "images/cfj.png",
+        "lien": "educateur/methodes animation.pdf",
+        "categorie": "CG",
+        "distinction": "plus suivi"
+    },
+    {
+        
+        "id": 11,
+        "titre": "Cours Protection de l'enfant et des groupes vulnérables",
+        "description": "Cours complet sur la protection de l'enfant et des groupes vulnérables concours CFJ éducateur spécialisé",
+        "image": "images/cfj.png",
+        "lien": "educateur/protection enfant.pdf",
+        "categorie": "CG",
+        "distinction": "plus suivi"
+    },
+    {
+        
+        "id": 12,
+        "titre": "Cours Partenariat et Travail en Equipe",
+        "description": "Cours complet sur le partenariat et le travail en équipe concours CFJ éducateur spécialisé",
+        "image": "images/cfj.png",
+        "lien": "educateur/travail equipe.pdf",
+        "categorie": "CG",
+        "distinction": "plus suivi"
+    },
+    {
+        
+        "id": 13,
+        "titre": "Cours Droits de l'Enfant",
+        "description": "Cours complet sur les droits de l'enfant concours CFJ éducateur spécialisé",
+        "image": "images/cfj.png",
+        "lien": "educateur/droits enfant.pdf",
+        "categorie": "CG",
+        "distinction": "plus suivi"
+    },
+    {
+        
+        "id": 14,
+        "titre": "Cours Protection Sociale au Sénégal",
+        "description": "Cours complet sur la protection sociale au Sénégal concours CFJ éducateur spécialisé",
+        "image": "images/cfj.png",
+        "lien": "educateur/protection sociale.pdf",
+        "categorie": "CG",
+        "distinction": "plus suivi"
+    },
+    {
+        
+        "id": 15,
+        "titre": "Cours Politiques Sociales et Structures d'Accueil",
+        "description": "Cours complet sur la  politiques sociales et structures d'accueil concours CFJ éducateur spécialisé",
+        "image": "images/cfj.png",
+        "lien": "educateur/politiques sociales.pdf",
+        "categorie": "CG",
+        "distinction": "plus suivi"
+    },
+    {
+        
+        "id": 16,
+        "titre": "Cours Déontologie et éthique professionnelle",
+        "description": "Cours complet sur la  déontologie et l'éthique professionnelle concours CFJ éducateur spécialisé",
+        "image": "images/cfj.png",
+        "lien": "educateur/deontologie.pdf",
+        "categorie": "CG",
+        "distinction": "plus suivi"
+    }
+    
+    
+]

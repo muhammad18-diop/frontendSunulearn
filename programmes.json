@@ -64,10 +64,10 @@
   },
   {
     "id": 7,
-    "titre": "Ecole Nationale de Formation Judiciaire",
-    "description": "Cours complet du CFJ incluant magistrature, greffe et éducateurs spécialisés.",
+    "titre": "Ecole Nationale de Formation Judiciaire section Educateur Spécialisé",
+    "description": "Cours complet du concours d'entrée au CFJ section Educateur Spécialisé",
     "image": "images/cfj.png",
-    "lien": "cfj.html",
+    "lien": "educateur.html",
     "categorie": "Administration",
     "distinction": "plus suivi"
   },
