@@ -38,7 +38,7 @@
   {
     "id": 5,
     "titre": "Ecole Nationale de Douanes",
-    "description": "Cours complet du concours des douanes incluant les grades d'agents brevetés aux contrôleurs.",
+    "description": "Cours complet du concours des douanes niveau contrôleur.",
     "image": "images/douane.png",
     "lien": "douane.html",
     "categorie": "Militaire",
