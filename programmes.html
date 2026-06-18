@@ -490,6 +490,100 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/
     </div>
 </div>
 
+
+
+<div class="flex justify-center m-5 hidden">
+    <button id="successButton"
+        data-modal-target="successModal"
+        data-modal-toggle="successModal"
+        type="button">
+        Show success message
+    </button>
+</div>
+
+<!-- Main modal -->
+<div id="successModal"
+    tabindex="-1"
+    aria-hidden="true"
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-full">
+
+    <div class="relative p-4 w-full max-w-md h-auto">
+
+        
+        <div class="relative p-5 text-center bg-gray-800 rounded-2xl shadow-xl border border-gray-700">
+
+            
+            <button type="button"
+                class="text-gray-400 absolute top-3 right-3 hover:bg-gray-700 hover:text-white rounded-lg p-2"
+                data-modal-toggle="successModal"
+                id="closeModalBtn">
+
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clip-rule="evenodd" />
+                </svg>
+
+                <span class="sr-only">Close modal</span>
+            </button>
+
+            
+            <div class="w-14 h-14 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
+
+                <svg class="w-8 h-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M5 13l4 4L19 7" />
+                </svg>
+
+            </div>
+
+            <!-- TITLE -->
+            <p class="mb-2 text-xl font-bold text-white">
+                Paiement réussi !
+            </p>
+
+            <!-- TEXT -->
+            <p class="mb-5 text-gray-300">
+                Félicitations, votre paiement a été confirmé.<br>
+                Vous avez maintenant accès au programme.
+            </p>
+
+            <!-- BUTTON -->
+             <button data-modal-toggle="successModal" type="button" class="py-2 px-3 text-sm font-medium text-center text-white rounded-lg bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:focus:ring-primary-900" id="continueBtn">
+                Continue
+            </button>
+
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("payment") === "success") {
+
+        const modal = document.getElementById("successModal");
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+
+        
+        window.history.replaceState({}, "", "programmes.html");
+    }
+
+    
+    document.getElementById("closeModalBtn").addEventListener("click", () => {
+        document.getElementById("successModal").classList.add("hidden");
+    });
+
+    document.getElementById("continueBtn").addEventListener("click", () => {
+        document.getElementById("successModal").classList.add("hidden");
+    });
+
+});
+</script>
+
 <!-- Flowbite JS -->
 <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
