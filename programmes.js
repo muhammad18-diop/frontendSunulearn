@@ -425,36 +425,3 @@ document.addEventListener("click", (e) => {
 });
 
 
-async function payer(amount, description) {
-    try {
-        const res = await fetch("https://backendsunulearn-3.onrender.com/api/paydunya/create-payment", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ amount, description })
-        });
-
-        const data = await res.json();
-        console.log("Réponse backend reçue :", data);
-
-        if (data.success && data.token) {
-            
-            const urlPaiement = "https://paydunya.com/sandbox-checkout/invoice/" + data.token;
-
-            
-            console.log("Redirection vers :", urlPaiement);
-            window.location.href = urlPaiement;
-        } else {
-            alert("Échec de la transaction : " + (data.message || "Erreur inconnue"));
-        }
-
-    } catch (error) {
-        console.error("Erreur réseau frontend :", error);
-        alert("Impossible de joindre le serveur backend.");
-    }
-}
-
-console.log(token);
-
-
