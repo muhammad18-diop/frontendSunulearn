@@ -142,5 +142,59 @@
         "lien": "douane bac/deconcentration.pdf",
         "categorie": "droit",
         "distinction": "plus suivi"
+    },
+    {
+        "id": 17,
+        "titre": "Cours Le Sytéme Monde : des espaces interdependants",
+        "description": "Cours complet sur le systéme monde concours douanes côntroleur",
+        "image": "images/douane.png",
+        "lien": "douane bac/systéme.pdf",
+        "categorie": "géographie",
+        "distinction": "plus suivi"
+    },
+    {
+        "id": 18,
+        "titre": "Cours La Construction de l'espace nord Américain",
+        "description": "Cours complet sur la construction de l'espace nord américain douanes côntroleur",
+        "image": "images/douane.png",
+        "lien": "douane bac/espace économique.pdf",
+        "categorie": "géographie",
+        "distinction": "plus suivi"
+    },
+    {
+        "id": 19,
+        "titre": "Cours L'espace Européen : réalités et perspectives",
+        "description": "Cours complet sur l'espace européen concours douanes côntroleur",
+        "image": "images/douane.png",
+        "lien": "douane bac/espace européen.pdf",
+        "categorie": "géographie",
+        "distinction": "plus suivi"
+    },
+    {
+        "id": 20,
+        "titre": "Cours L'Asie Pacifique : les facteurs d'émergences et leurs limites",
+        "description": "Cours complet sur l'Asie pacifique concours douanes côntroleur",
+        "image": "images/douane.png",
+        "lien": "douane bac/asie pacifique.pdf",
+        "categorie": "géographie",
+        "distinction": "plus suivi"
+    },
+    {
+        "id": 21,
+        "titre": "Cours Le Bresil : une puissance du tiers monde",
+        "description": "Cours complet sur le Brésil une puissance du tiers monde concours douanes côntroleur",
+        "image": "images/douane.png",
+        "lien": "douane bac/bresil.pdf",
+        "categorie": "géographie",
+        "distinction": "plus suivi"
+    },
+    {
+        "id": 22,
+        "titre": "Cours Le continent Africain : les problémes et perspectives de développement",
+        "description": "Cours complet sur le continent africain concours douanes côntroleur",
+        "image": "images/douane.png",
+        "lien": "douane bac/afrique.pdf",
+        "categorie": "géographie",
+        "distinction": "plus suivi"
     }
 ]
