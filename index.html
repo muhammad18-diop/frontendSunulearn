@@ -544,7 +544,7 @@ Notre mission est d’aider chaque étudiant et candidat à réussir grâce à u
           <li>✓ Accès mobile et ordinateur</li>
         </ul>
 
-        <a href="#" onclick="payer(5000); return false" class="text-white bg-gray-800 hover:bg-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+        <a href="#" onclick="payer(5000); return false" class="lien text-white bg-gray-800 hover:bg-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
           Commencer
         </a>
       </div>
@@ -569,7 +569,7 @@ Notre mission est d’aider chaque étudiant et candidat à réussir grâce à u
           <li>✓ Suivi de progression</li>
         </ul>
 
-        <a href="#" onclick="payer(10000); return false" class="text-white bg-gray-800 hover:bg-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+        <a href="#" onclick="payer(10000); return false" class="lien text-white bg-gray-800 hover:bg-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
           Choisir cette offre
         </a>
       </div>
@@ -594,7 +594,7 @@ Notre mission est d’aider chaque étudiant et candidat à réussir grâce à u
           <li>✓ Support prioritaire</li>
         </ul>
 
-        <a href="#" onclick="payer(15000); return false" class="text-white bg-gray-800 hover:bg-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+        <a href="#" onclick="payer(15000); return false" class="lien text-white bg-gray-800 hover:bg-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
           Devenir Premium
         </a>
       </div>
@@ -958,6 +958,16 @@ async function payer(amount, description) {
     }
 }
 
+document.addEventListener("click", (e) => {
+    const lien = e.target.closest(".lien");
+    if (!lien) return;
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+        e.preventDefault();
+        window.location.href = "connexion.html";
+    }
+});
 
 
 </script>

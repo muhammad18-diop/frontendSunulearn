@@ -34,7 +34,7 @@ async function programmes(){
             ${programme.description}
           </p>
           
-<a href="${programme.lien}" class="lien inline-flex font-medium items-center text-fg-brand hover:underline">
+<a href="${programme.lien}" onclick="payer(2500); return false" class="lien inline-flex font-medium items-center text-fg-brand hover:underline">
         Consulter
         <svg class="w-4 h-4 ms-2 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"/></svg>
     </a>
@@ -79,7 +79,7 @@ async function ecole(){
             ${p.description}
           </p>
           
-<a href="${p.lien}" class="lien inline-flex font-medium items-center text-fg-brand hover:underline">
+<a href="${p.lien}"onclick="payer(2500); return false" class="lien inline-flex font-medium items-center text-fg-brand hover:underline">
         Consulter
         <svg class="w-4 h-4 ms-2 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"/></svg>
     </a>
@@ -126,7 +126,7 @@ async function militaire(){
             ${p.description}
           </p>
           
-<a href="${p.lien}" class="lien inline-flex font-medium items-center text-fg-brand hover:underline">
+<a href="${p.lien}" onclick="payer(2500); return false" class="lien inline-flex font-medium items-center text-fg-brand hover:underline">
         Consulter
         <svg class="w-4 h-4 ms-2 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"/></svg>
     </a>
@@ -172,7 +172,7 @@ async function Administration(){
             ${p.description}
           </p>
           
-<a href="${p.lien}" class="lien inline-flex font-medium items-center text-fg-brand hover:underline">
+<a href="${p.lien}" onclick="payer(2500); return false" class="lien inline-flex font-medium items-center text-fg-brand hover:underline">
         Consulter
         <svg class="w-4 h-4 ms-2 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"/></svg>
     </a>
@@ -257,7 +257,7 @@ async function afficherCategorie(categorie){
             ${m.description}
           </p>
           
-<a href="${m.lien}" class="lien inline-flex font-medium items-center text-fg-brand hover:underline">
+<a href="${m.lien}" onclick="payer(2500); return false" class="lien inline-flex font-medium items-center text-fg-brand hover:underline">
         Consulter
         <svg class="w-4 h-4 ms-2 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"/></svg>
     </a>
@@ -326,6 +326,8 @@ const btnDeconnexion = document.getElementById("btnDeconnexion");
 const menuProfile = document.getElementById("menuProfile");
 
 const token = localStorage.getItem("token");
+console.log(token);
+
 
 if (token) {
     if (btnConnexion) btnConnexion.classList.add("hidden");
@@ -421,3 +423,38 @@ document.addEventListener("click", (e) => {
         menuProfile.classList.add("hidden");
     }
 });
+
+
+async function payer(amount, description) {
+    try {
+        const res = await fetch("https://backendsunulearn-3.onrender.com/api/paydunya/create-payment", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ amount, description })
+        });
+
+        const data = await res.json();
+        console.log("Réponse backend reçue :", data);
+
+        if (data.success && data.token) {
+            
+            const urlPaiement = "https://paydunya.com/sandbox-checkout/invoice/" + data.token;
+
+            
+            console.log("Redirection vers :", urlPaiement);
+            window.location.href = urlPaiement;
+        } else {
+            alert("Échec de la transaction : " + (data.message || "Erreur inconnue"));
+        }
+
+    } catch (error) {
+        console.error("Erreur réseau frontend :", error);
+        alert("Impossible de joindre le serveur backend.");
+    }
+}
+
+console.log(token);
+
+
