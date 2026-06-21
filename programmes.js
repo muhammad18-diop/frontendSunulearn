@@ -425,3 +425,33 @@ document.addEventListener("click", (e) => {
 });
 
 
+
+let tabprogrammes =  [];
+
+async function programmeTab() {
+    try {
+        const response = await fetch("programmes.json");
+        const data = await response.json();
+
+        let liens = document.querySelectorAll(".lien");
+        liens.forEach(lien => {
+            lien.addEventListener("click", () => {
+                const id = lien.dataset.id;
+                const programme = data.find(p => p.id == id);
+
+                if (programme) {
+                    // 1. On l'ajoute au tableau
+                    tabprogrammes.push(programme);
+                    
+                    // 2. On sauvegarde le tableau mis à jour dans le localStorage
+                    localStorage.setItem("mesProgrammes", JSON.stringify(tabprogrammes));
+                    
+                    console.log("Sauvegardé :", tabprogrammes);
+                }
+            });
+        });
+    } catch (error) {
+        console.error(error);
+    }
+}
+programmeTab();

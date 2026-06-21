@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="shortcut icon" href="images/logo2.jpg" type="image/x-icon">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+  rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"><link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  
+  <!-- Flowbite CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet"/>
+  <link rel="stylesheet"href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+</head>
+<body class="bg-gray-900 text-white">
+
+<div class="min-h-screen bg-gray-900 flex items-center justify-center p-4">
+
+    <div class="w-full max-w-2xl bg-gray-800 border border-gray-700 rounded-2xl shadow-2xl p-6">
+
+        <h1 class="text-3xl font-bold text-center text-blue-400 mb-6">
+            Quiz Culture Générale – CFJ Section Greffes
+        </h1>
+
+        <!-- Thème -->
+        <p id="theme" class="text-gray-400 text-center mb-4"></p>
+
+        <!-- Barre de progression -->
+        <div class="w-full bg-gray-700 rounded-full h-3 mb-6">
+            <div
+                id="progress"
+                class="bg-blue-500 h-3 rounded-full transition-all duration-500"
+                style="width:0%">
+            </div>
+        </div>
+
+        <!-- Question -->
+        <h2 id="question" class="text-xl font-semibold mb-6"></h2>
+
+        <!-- Réponses -->
+        <div id="answers" class="space-y-3"></div>
+
+        <!-- Bouton -->
+        <button
+            onclick="nextQuestion()"
+            class="w-full mt-6 bg-blue-600 hover:bg-blue-700 transition text-white font-semibold py-3 rounded-xl shadow-lg">
+            Question suivante
+        </button>
+
+    </div>
+
+</div>
+<script>
+
+const quiz = [
+  {
+    "id": 1,
+    "theme": "Histoire et Institutions du Sénégal",
+    "difficulty": "Difficile",
+    "question": "Avant l'indépendance de 1960, quelle loi-cadre de l'administration coloniale française (adoptée en 1956) a instauré le suffrage universel et l'autonomie interne dans les territoires d'Afrique noire ?",
+    "answers": [
+      "La loi Lamine Guèye",
+      "La loi Defferre",
+      "Le décret Blaise Diagne",
+      "La constitution de l'Union française"
+    ],
+    "correctAnswer": 1,
+    "explanation": "La loi-cadre Defferre du 23 juin 1956 a permis la création de conseils de gouvernement locaux, préparant l'élite politique à l'exercice du pouvoir d'État."
+  },
+  {
+    "id": 2,
+    "theme": "Doctrines Politiques et Philosophiques",
+    "difficulty": "Difficile",
+    "question": "Quel concept central de la philosophie de Cheikh Anta Diop postule que l'Afrique noire doit s'appuyer sur un socle culturel et linguistique partagé pour bâtir un État fédéral ?",
+    "answers": [
+      "L'afrocentrisme universaliste",
+      "L'unité culturelle de l'Afrique noire",
+      "Le matérialisme historique africain",
+      "Le panafricanisme économique"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Théorisée dans son ouvrage éponyme de 1959, 'L'unité culturelle de l'Afrique noire' démontre les structures communes des sociétés africaines face au modèle sémito-aryen."
+  },
+  {
+    "id": 3,
+    "theme": "Géopolitique Africaine",
+    "difficulty": "Difficile",
+    "question": "Dans le cadre de l'Union Africaine, quel mécanisme d'évaluation par les pairs (MAEP) a été créé au début des années 2000 pour auditer la gouvernance des États membres ?",
+    "answers": [
+      "Le Conseil de paix et de sécurité (CPS)",
+      "Le Mécanisme Africain d'Évaluation par les Pairs",
+      "Le Comité de transition du NEPAD",
+      "La Commission africaine des droits de l'homme"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Le MAEP est un instrument de l'UA adopté en 2003, auquel les États adhèrent volontairement pour évaluer leur gouvernance politique, économique et démocratique."
+  },
+  {
+    "id": 4,
+    "theme": "Histoire contemporaine & Diplomatie",
+    "difficulty": "Difficile",
+    "question": "Quelle conférence internationale, réunie en 1955, a marqué la prise de conscience géopolitique du Tiers-monde et jeté les bases du mouvement des non-alignés ?",
+    "answers": [
+      "La conférence de Yalta",
+      "La conférence de Bandung",
+      "La conférence de Potsdam",
+      "La conférence de Genève"
+    ],
+    "correctAnswer": 1,
+    "explanation": "La conférence de Bandung (Indonésie) a réuni pour la première fois les dirigeants de 29 pays asiatiques et africains pour refuser la logique des blocs de la Guerre froide."
+  },
+  {
+    "id": 5,
+    "theme": "Économie du Développement",
+    "difficulty": "Difficile",
+    "question": "Quelle école de pensée économique, popularisée par l'économiste Raúl Prebisch, affirme que les pays de la 'périphérie' (Sud) souffrent d'une dégradation structurelle des termes de l'échange face au 'centre' (Nord) ?",
+    "answers": [
+      "L'école classique de Manchester",
+      "La théorie de la dépendance (ou structuralisme)",
+      "La synthèse néo-classique",
+      "L'école de Chicago"
+    ],
+    "correctAnswer": 1,
+    "explanation": "La théorie de la dépendance postule que le commerce international tend à enrichir les pays industrialisés au détriment des exportateurs de matières premières."
+  },
+  {
+    "id": 6,
+    "theme": "Histoire Administrative du Sénégal",
+    "difficulty": "Difficile",
+    "question": "Sous la période coloniale, quelle ordonnance de 1848 a définitivement aboli l'esclavage dans les Quatre Communes du Sénégal (Saint-Louis, Gorée, Dakar, Rufisque) ?",
+    "answers": [
+      "Le décret de Victor Schœlcher",
+      "Le code de l'indigénat",
+      "L'ordonnance du gouverneur Faidherbe",
+      "La charte des comptoirs"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Le décret du 27 avril 1948, rédigé par Victor Schœlcher, abolit l'esclavage dans toutes les colonies françaises, conférant immédiatement le statut de citoyen aux anciens esclaves des Quatre Communes."
+  },
+  {
+    "id": 7,
+    "theme": "Histoire des Idées & Philosophie",
+    "difficulty": "Difficile",
+    "question": "Quel penseur de la Renaissance a théorisé pour la première fois l'autonomie de la politique par rapport à la morale et à la religion dans son traité 'Le Prince' ?",
+    "answers": [
+      "Thomas More",
+      "Nicolas Machiavel",
+      "Érasme",
+      "Jean Bodin"
+    ],
+    "correctAnswer": 1,
+    "explanation": "En 1513, Machiavel pose les bases de la science politique moderne en décrivant les mécanismes pragmatiques de la conquête et de la conservation du pouvoir."
+  },
+  {
+    "id": 8,
+    "theme": "Macroéconomie & Monnaie",
+    "difficulty": "Difficile",
+    "question": "En macroéconomie, comment qualifie-t-on le phénomène où les banques centrales injectent massivement des liquidités dans l'économie en achetant des actifs financiers, en dehors des canaux de taux d'intérêt classiques ?",
+    "answers": [
+      "La dévaluation compétitive",
+      "L'assouplissement quantitatif (Quantitative Easing)",
+      "La stérilisation monétaire",
+      "Le seigneuriage d'urgence"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Le Quantitative Easing (QE) est une mesure non conventionnelle utilisée pour stimuler l'économie lorsque les taux directeurs sont déjà proches de zéro."
+  },
+  {
+    "id": 9,
+    "theme": "Histoire et Sociologie religieuse au Sénégal",
+    "difficulty": "Difficile",
+    "question": "Quelle figure majeure de la résistance pacifique coloniale a fondé la cité sainte de Touba en 1888, bouleversant l'organisation sociopolitique du bassin arachidier ?",
+    "answers": [
+      "El Hadji Malick Sy",
+      "Cheikh Ahmadou Bamba Mbacké",
+      "Seydina Limamou Laye",
+      "Thierno Souleymane Baal"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Le fondateur du mouridisme a structuré une organisation basée sur le culte du travail et de la dévotion spirituelle, offrant une alternative sociale face au démantèlement des royaumes traditionnels par les colonisateurs."
+  },
+  {
+    "id": 10,
+    "theme": "Économie Internationale",
+    "difficulty": "Difficile",
+    "question": "Quel économiste est à l'origine du concept de 'destruction créatrice', selon lequel l'innovation technologique périme les anciennes structures industrielles pour en créer de nouvelles ?",
+    "answers": [
+      "David Ricardo",
+      "Joseph Schumpeter",
+      "Milton Friedman",
+      "Thomas Malthus"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Schumpeter a placé l'entrepreneur-innovateur au cœur des cycles de croissance économique à travers sa théorie des fluctuations."
+  },
+  {
+    "id": 11,
+    "theme": "Institutions de contrôle étatique",
+    "difficulty": "Difficile",
+    "question": "Au Sénégal, quel corps d'élite rattaché directement à la Présidence de la République dispose de prérogatives générales d'investigation sur la gestion de toutes les administrations publiques, ministères et sociétés nationales ?",
+    "answers": [
+      "La Cellule de Traitement des Informations Financières (CENTIF)",
+      "L'Inspection Générale d'État (IGE)",
+      "L'Office National de Lutte contre la Fraude et la Corruption (OFNAC)",
+      "La Direction de la Surveillance du Territoire"
+    ],
+    "correctAnswer": 1,
+    "explanation": "L'IGE mène des audits de performance et de régularité au plus haut niveau de l'appareil étatique."
+  },
+  {
+    "id": 12,
+    "theme": "Histoire des Institutions judiciaires",
+    "difficulty": "Difficile",
+    "question": "En France, quel édit historique de 1539, pris par le roi François Ier, a imposé l'usage de la langue française dans les actes judiciaires et l'enregistrement des baptêmes, préfigurant l'état civil moderne ?",
+    "answers": [
+      "L'édit de Nantes",
+      "L'ordonnance de Villers-Cotterêts",
+      "Le code d'Éboué",
+      "L'édit de Moulins"
+    ],
+    "correctAnswer": 1,
+    "explanation": "L'ordonnance de Villers-Cotterêts est un jalon capital de la centralisation administrative française en écartant le latin des tribunaux."
+  },
+  {
+    "id": 13,
+    "theme": "Littérature Panafricaine & Idéologies",
+    "difficulty": "Difficile",
+    "question": "Quel penseur et psychiatre martiniquais, figure majeure du tiers-mondisme, a analysé les séquelles psychologiques de la colonisation dans son ouvrage mythique 'Les Damnés de la Terre' (1961) ?",
+    "answers": [
+      "Aimé Césaire",
+      "Frantz Fanon",
+      "Léon-Gontran Damas",
+      "Albert Memmi"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Fanon, engagé aux côtés du FLN algérien, livre dans cet ouvrage préfacé par Jean-Paul Sartre une critique radicale de la violence coloniale."
+  },
+  {
+    "id": 14,
+    "theme": "Histoire Politique Africaine",
+    "difficulty": "Difficile",
+    "question": "Quel dirigeant progressiste, figure de la révolution burkinabè, a officiellement renommé la Haute-Volta en 'Burkina Faso' ('Le pays des hommes intègres') en août 1984 ?",
+    "answers": [
+      "Blaise Compaoré",
+      "Thomas Sankara",
+      "Maurice Yaméogo",
+      "Ibrahim Traoré"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Thomas Sankara a mené une politique de rupture totale, d'autosuffisance économique et de revalorisation de la dignité culturelle nationale."
+  },
+  {
+    "id": 15,
+    "theme": "Géopolitique des Ressources",
+    "difficulty": "Difficile",
+    "question": "Quelle organisation internationale, fondée à Bagdad en 1960, utilise des quotas de production pour influencer les cours mondiaux du pétrole brut ?",
+    "answers": [
+      "L'AIE (Agence Internationale de l'Énergie)",
+      "L'OPEP (Organisation des Pays Exportateurs de Pétrole)",
+      "Le Forum des pays exportateurs de gaz",
+      "Le Groupe d'action financière"
+    ],
+    "correctAnswer": 1,
+    "explanation": "L'OPEP réunit plusieurs pays producteurs (Moyen-Orient, Afrique, Amérique du Sud) pour coordonner leurs politiques pétrolières."},{"id": 16,"theme": "Démographie & Aménagement du territoire","difficulty": "Difficile","question": "Au Sénégal, quel concept d'urbanisme critique désigne la concentration disproportionnée de la population, des richesses économiques et des fonctions de commandement politique dans la seule région de Dakar ?","answers": ["La métropolisation réticulaire","La macrocéphalie urbaine","L'exode structurel linéaire","La périurbanisation diffuse"],"correctAnswer": 1,"explanation": "La macrocéphalie caractérise un réseau urbain dominé de manière excessive par une seule ville (Dakar occupe moins de 0,3 % du territoire mais concentre la majorité de l'activité)."},{"id": 17,"theme": "Histoire Moderne & Diplomatie","difficulty": "Difficile","question": "Quels traités signés en 1648 ont mis fin à la guerre de Trente Ans et forgé le concept moderne de souveraineté étatique nationale en interdisant toute ingérence extérieure ?","answers": ["Les traités de Westphalie","Le traité de Vienne","Le traité de Tordesillas","Le traité d'Utrecht"],"correctAnswer": 0,"explanation": "Le modèle 'westphalien' repose sur l'égalité juridique entre les États souverains et le principe de non-intervention dans les affaires intérieures d'autrui."},{"id": 18,"theme": "Histoire Contemporaine du Sénégal","difficulty": "Difficile","question": "En décembre 1981, le Sénégal et la Gambie ont signé un pacte créant une entité confédérale qui fut dissoute en 1989. Comment s'appelait cette union ?","answers": ["La Fédération du Mali","La Confédération de Sénégambie","L'Union du fleuve Mano","Le Conseil de l'Entente"],"correctAnswer": 1,"explanation": "Née suite à l'intervention militaire sénégalaise pour contrer un coup d'État en Gambie, la Confédération de Sénégambie visait à intégrer les forces armées et l'économie des deux voisins."},{"id": 19,"theme": "Économie & Finances Publiques","difficulty": "Difficile","question": "Quel économiste de l'école néo-classique a théorisé le concept de 'croissance équilibrée' à long terme en montrant que le progrès technique est le seul moteur autonome de la productivité ?","answers": ["Robert Solow","Paul Romer","Arthur Laffer","John Hicks"],"correctAnswer": 0,"explanation": "Le modèle de Solow (1956) qualifie le progrès technique de 'résidu écononique' exogène, indispensable pour contrer la loi des rendements décroissants du capital."},{"id": 20,"theme": "Histoire et Révolution Sociale","difficulty": "Difficile","question": "Au XVIIIe siècle au Fouta Toro, quel mouvement de révolution théocratique mené par Thierno Souleymane Baal a renversé la dynastie des Deniankobé pour instaurer un régime électif ?","answers": ["La révolution Torodo","Le djihad Almoravide","L'épopée de El Hadji Omar Tall","La résistance du Cayor"],"correctAnswer": 0,"explanation": "La révolution Torodo (1776) a instauré l'Almamiat, un régime théocratique constitutionnel interdisant la traite négrière et basé sur le choix des dirigeants par le mérite et l'érudition."}]
+
+
+let current = 0
+let score = 0;
+let selected = null;
+
+function loadQuestion() {
+    const q = quiz[current];
+
+    document.getElementById("question").innerText =
+       ` ${current + 1}. ${q.question}`;
+
+   
+    const theme = document.getElementById("theme");
+    if (theme) {
+        theme.innerText = `${q.theme} • ${q.difficulty}`;
+    }
+
+    const answersDiv = document.getElementById("answers");
+    answersDiv.innerHTML = "";
+
+    q.answers.forEach((answer, index) => {
+
+    answersDiv.innerHTML += `
+        <label
+            class="flex items-center p-4 rounded-xl border border-gray-700 bg-gray-800 hover:bg-gray-700 cursor-pointer transition duration-200">
+
+            <input
+                type="radio"
+                name="answer"
+                value="${index}"
+                class="w-4 h-4 text-blue-500 bg-gray-700 border-gray-600 focus:ring-blue-500">
+
+            <span class="ml-3 text-gray-200">
+                ${answer}
+            </span>
+
+        </label>
+    `;
+
+});
+
+    
+    document.getElementById("progress").style.width =
+       ` ${((current + 1) / quiz.length) * 100}%`;
+}
+
+function nextQuestion() {
+
+    const checked = document.querySelector('input[name="answer"]:checked');
+
+    if (!checked) {
+        alert("Veuillez sélectionner une réponse.");
+        return;
+    }
+
+    selected = parseInt(checked.value);
+
+    const q = quiz[current];
+
+
+    if (selected === q.correctAnswer) {
+        score++;
+    }
+
+    current++;
+
+    if (current < quiz.length) {
+        loadQuestion();
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+
+    const percentage = Math.round((score / quiz.length) * 100);
+
+    document.querySelector(".max-w-2xl").innerHTML = `
+
+        <div class="text-center">
+
+            <h2 class="text-4xl font-bold text-green-400">
+                🎉 Quiz terminé
+            </h2>
+
+            <p class="mt-8 text-2xl text-gray-200">
+                Votre score
+            </p>
+
+            <p class="text-5xl font-bold text-blue-400 mt-2">
+                ${score} / ${quiz.length}
+            </p>
+
+            <p class="mt-4 text-xl text-gray-300">
+                ${percentage} %
+            </p>
+
+            <button
+                onclick="location.reload()"
+                class="mt-8 px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-xl font-semibold transition">
+                Recommencer
+            </button>
+
+        </div>
+
+    `;
+}
+
+loadQuestion();
+</script>
+</body>
+</html>

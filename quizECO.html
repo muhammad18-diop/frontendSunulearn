@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="shortcut icon" href="images/logo2.jpg" type="image/x-icon">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+  rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"><link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  
+  <!-- Flowbite CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet"/>
+  <link rel="stylesheet"href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+</head>
+<body class="bg-gray-900 text-white">
+
+<div class="min-h-screen bg-gray-900 flex items-center justify-center p-4">
+
+    <div class="w-full max-w-2xl bg-gray-800 border border-gray-700 rounded-2xl shadow-2xl p-6">
+
+        <h1 class="text-3xl font-bold text-center text-blue-400 mb-6">
+            Quiz Economie et Finances Publiques – ENA Cycle A Direts et Professionnels
+        </h1>
+
+        <!-- Thème -->
+        <p id="theme" class="text-gray-400 text-center mb-4"></p>
+
+        <!-- Barre de progression -->
+        <div class="w-full bg-gray-700 rounded-full h-3 mb-6">
+            <div
+                id="progress"
+                class="bg-blue-500 h-3 rounded-full transition-all duration-500"
+                style="width:0%">
+            </div>
+        </div>
+
+        <!-- Question -->
+        <h2 id="question" class="text-xl font-semibold mb-6"></h2>
+
+        <!-- Réponses -->
+        <div id="answers" class="space-y-3"></div>
+
+        <!-- Bouton -->
+        <button
+            onclick="nextQuestion()"
+            class="w-full mt-6 bg-blue-600 hover:bg-blue-700 transition text-white font-semibold py-3 rounded-xl shadow-lg">
+            Question suivante
+        </button>
+
+    </div>
+
+</div>
+<script>
+
+const quiz = [
+  {
+    "id": 1,
+    "theme": "Finances publiques",
+    "difficulty": "Difficile",
+    "question": "Quel principe, modernisé par la directive-cadre de l'UEMOA portant lois de finances, impose de présenter le budget de l'État non plus par nature de dépenses, mais par objectifs socio-économiques ?",
+    "answers": [
+      "La budgétisation par programme (budget-programme)",
+      "La fongibilité asymétrique des crédits",
+      "La règle de la performance comptable",
+      "Le principe de la sincérité budgétaire"
+    ],
+    "correctAnswer": 0,
+    "explanation": "La gestion axée sur les résultats (GAR) remplace la logique de moyens par une logique de résultats à travers la mise en œuvre des budgets-programmes."
+  },
+  {
+    "id": 2,
+    "theme": "Économie",
+    "difficulty": "Difficile",
+    "question": "En macroéconomie, quel effet désigne la situation où une augmentation des dépenses publiques financée par l'emprunt réduit l'investissement privé en faisant monter les taux d'intérêt ?",
+    "answers": [
+      "L'effet d'apprentissage (Learning by doing)",
+      "L'effet d'éviction (Crowding-out effect)",
+      "Le paradoxe de la tranquillité de Minsky",
+      "L'effet d'hystérèse du marché du travail"
+    ],
+    "correctAnswer": 1,
+    "explanation": "L'effet d'éviction se produit lorsque l'État capte l'épargne disponible sur le marché, augmentant le coût du capital pour les entreprises privées."
+  },
+  {
+    "id": 3,
+    "theme": "Finances publiques",
+    "difficulty": "Difficile",
+    "question": "Dans le cadre de la LOLF au Sénégal, qu'implique techniquement le principe de la 'fongibilité asymétrique' des crédits au sein d'un programme ?",
+    "answers": [
+      "La possibilité de transférer des crédits vers n'importe quelle catégorie de dépenses sans restriction",
+      "L'autorisation d'utiliser les dépenses de personnel pour financer des dépenses d'investissement, mais pas l'inverse",
+      "L'interdiction absolue d'abonder les dépenses de personnel (Titre 2) à partir d'autres natures de dépenses",
+      "L'obligation de liquider tous les crédits de fonctionnement avant d'engager les investissements"
+    ],
+    "correctAnswer": 2,
+    "explanation": "La fongibilité est asymétrique car les crédits ouverts sur le Titre 2 (dépenses de personnel) peuvent être réduits pour abonder d'autres titres, mais ne peuvent jamais être abondés par des crédits d'autres titres."
+  },
+  {
+    "id": 4,
+    "theme": "Économie",
+    "difficulty": "Difficile",
+    "question": "Quelle doctrine économique, conceptualisée par Robert Lucas, postule que les politiques monétaires ou budgétaires de relance sont inefficaces car les agents anticipent parfaitement leurs conséquences ?",
+    "answers": [
+      "L'hypothèse des anticipations rationnelles (Nouvelle Économie Classique)",
+      "La théorie quantitative de la monnaie de Friedman",
+      "La théorie des cycles réels (RBC)",
+      "Le modèle de croissance endogène"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Selon la NEC, si les agents ont des anticipations rationnelles, ils modifient immédiatement leur comportement, annulant les effets réels des politiques conjoncturelles de l'État."
+  },
+  {
+    "id": 5,
+    "theme": "Finances publiques",
+    "difficulty": "Difficile",
+    "question": "Quel critère de convergence nominale du Pacte de convergence de l'UEMOA fixe le plafond du ratio de la dette publique totale rapportée au PIB ?",
+    "answers": [
+      "Un taux d'endettement inférieur ou égal à 60 % du PIB",
+      "Un taux d'endettement inférieur ou égal à 70 % du PIB",
+      "Un taux d'endettement inférieur ou égal à 50 % du PIB",
+      "Un taux d'endettement inférieur ou égal à 80 % du PIB"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Le critère de premier rang de l'UEMOA limite l'encours de la dette publique (intérieure et extérieure) à 70 % du PIB nominal."
+  },
+  {
+    "id": 6,
+    "theme": "Économie",
+    "difficulty": "Difficile",
+    "question": "Comment appelle-t-on le théorème selon lequel, sous certaines conditions, le mode de financement des dépenses publiques (emprunt ou impôt) n'a aucun impact sur l'économie réelle ?",
+    "answers": [
+      "Le théorème de Stolper-Samuelson",
+      "L'équivalence ricardienne (ou théorème de Ricardo-Barro)",
+      "La loi d'Okun",
+      "Le paradoxe de Leontief"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Ce théorème avance que face à un emprunt public, les agents épargnent en prévision des impôts futurs nécessaires au remboursement, ce qui neutralise la relance."
+  },
+  {
+    "id": 7,
+    "theme": "Finances publiques",
+    "difficulty": "Difficile",
+    "question": "Au Sénégal, quel visa obligatoire du Contrôleur financier bloque l'acte de l'ordonnateur si les fonds disponibles sur la ligne budgétaire sont insuffisants ?",
+    "answers": [
+      "Le visa de conformité législative",
+      "Le visa de disponibilité des crédits (ou contrôle de la soutenabilité budgétaire)",
+      "Le quitus comptable d'exécution",
+      "La certification de service fait"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Le contrôle financier a pour mission principale de s'assurer de la disponibilité des crédits avant toute mise en engagement des dépenses."
+  },
+  {
+    "id": 8,
+    "theme": "Économie",
+    "difficulty": "Difficile",
+    "question": "Dans le modèle IS-LM en économie ouverte (modèle Mundell-Fleming), quelle est l'efficacité d'une politique budgétaire de relance sous un régime de changes flexibles et de parfaite mobilité des capitaux ?",
+    "answers": [
+      "La politique budgétaire est totalement inefficace",
+      "La politique budgétaire est maximalement efficace",
+      "La politique budgétaire provoque une dépréciation monétaire massive",
+      "La politique budgétaire réduit l'inflation à court terme"
+    ],
+    "correctAnswer": 0,
+    "explanation": "En changes flexibles, la hausse des taux d'intérêt attire les capitaux, ce qui apprécie la monnaie et détériore la balance commerciale, annulant totalement l'effet de la relance budgétaire."
+  },
+  {
+    "id": 9,
+    "theme": "Finances publiques",
+    "difficulty": "Difficile",
+    "question": "Quelle est la nature juridique d'un décret d'avance pris par le Président de la République en cours d'exercice budgétaire ?",
+    "answers": [
+      "Un acte qui annule définitivement les crédits d'un ministère",
+      "Une mesure d'urgence permettant d'ouvrir des crédits supplémentaires sans attendre le vote d'une LFR, sous réserve de ratification législative ultérieure",
+      "Une loi de finances modificative déguisée",
+      "Un ordre de virement direct depuis le compte de la BCEAO"
+    ],
+    "correctAnswer": 1,
+    "explanation": "En cas d'urgence, le décret d'avance permet d'ouvrir des crédits après avis de la commission des finances de l'Assemblée, mais doit être ratifié dans la plus prochaine loi de finances."
+  },
+  {
+    "id": 10,
+    "theme": "Économie",
+    "difficulty": "Difficile",
+    "question": "Quelle courbe met en évidence la relation empirique décroissante entre le taux de chômage et le taux d'inflation à court terme ?",
+    "answers": [
+      "La courbe de Laffer",
+      "La courbe de Phillips",
+      "La courbe de Lorenz",
+      "La courbe de Kuznets"
+    ],
+    "correctAnswer": 1,
+    "explanation": "La courbe de Phillips originelle (1958) montrait un arbitrage à court terme entre inflation et chômage, contesté plus tard à long terme par Milton Friedman."
+  },
+  {
+    "id": 11,
+    "theme": "Finances publiques",
+    "difficulty": "Difficile",
+    "question": "Quel principe comptable de l'État exige que toutes les opérations financières (recettes et dépenses) soient enregistrées au titre de l'année civile au cours de laquelle elles ont été exécutées ?",
+    "answers": [
+      "La comptabilité d'exercice (droits constatés)",
+      "Le principe de l'exercice ou de la gestion budget-temps",
+      "La comptabilité de caisse pure",
+      "Le principe de la permanence des méthodes"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Avec la réforme des finances publiques, l'État passe d'une comptabilité de caisse à une comptabilité d'exercice (droits constatés), proche de la comptabilité privée."
+  },
+  {
+    "id": 12,
+    "theme": "Économie",
+    "difficulty": "Difficile",
+    "question": "En économie monétaire, comment définit-on la 'règle de Taylor' ?",
+    "answers": [
+      "Une formule déterminant le montant exact des impôts optimaux",
+      "Une règle de conduite fixant le taux d'intérêt directeur optimal de la banque centrale en fonction des écarts d'inflation et de production (output gap)",
+      "Une loi sur la vitesse de circulation de la monnaie",
+      "Une théorie sur la parité des pouvoirs d'achat"
+    ],
+    "correctAnswer": 1,
+    "explanation": "La règle de Taylor (1993) guide les banques centrales en ajustant les taux d'intérêt selon que l'économie s'éloigne de sa cible d'inflation ou de son PIB potentiel."
+  },
+  {
+    "id": 13,
+    "theme": "Finances publiques",
+    "difficulty": "Difficile",
+    "question": "Qu'est-ce que le 'solde budgétaire primaire' d'un État ?",
+    "answers": [
+      "Le solde budgétaire calculé uniquement à partir des recettes douanières",
+      "Le solde budgétaire global hors charges financières de la dette (intérêts de la dette)",
+      "Le montant des réserves détenues sur le compte unique du Trésor",
+      "Le déficit net de la balance commerciale publique"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Le solde primaire exclut le service de la dette (intérêts) pour mesurer l'effort budgétaire réel de l'État sur ses dépenses courantes d'exploitation."
+  },
+  {
+    "id": 14,
+    "theme": "Économie",
+    "difficulty": "Difficile",
+    "question": "Quel économiste a introduit la notion de 'sélection adverse' pour décrire les asymétries d'information sur le marché des voitures d'occasion ('The Market for Lemons') ?",
+    "answers": [
+      "Joseph Stiglitz",
+      "George Akerlof",
+      "Michael Spence","Oliver Williamson"],"correctAnswer": 1,"explanation": "George Akerlof (Prix Nobel 2001) a formalisé comment l'asymétrie d'information avant la signature d'un contrat peut mener à l'effondrement d'un marché."},{"id": 15,"theme": "Finances publiques","difficulty": "Difficile","question": "Dans la procédure d'exécution des dépenses de l'État, quelle phase administrative juridiquement contraignante crée la dette de l'État en constatant le service fait ?","answers": ["L'engagement","La liquidation","L'ordonnancement","Le paiement"],"correctAnswer": 1,"explanation": "La liquidation vérifie la réalité de la dette et arrête le montant exact de la dépense sur la base des pièces justificatives (certification du service fait)."},{"id": 16,"theme": "Économie","difficulty": "Difficile","question": "En économie internationale, qu'exprime la condition de Marshall-Lerner (ou condition des élasticités critiques) lors d' d'une dévaluation monétaire ?","answers": ["Que la dévaluation réduit instantanément le chômage structurel","Que la dévaluation améliore la balance commerciale si la somme des élasticités-prix des exportations et des importations est supérieure à 1","Que la dévaluation détruit systématiquement le pouvoir d'achat interne","Que les taux d'intérêt doivent être augmentés pour stabiliser le PIB"],"correctAnswer": 1,"explanation": "Cette condition montre qu'une dévaluation ne rétablit les comptes extérieurs que si les volumes échangés réagissent suffisamment aux variations de prix."},{"id": 17,"theme": "Finances publiques","difficulty": "Difficile","question": "Quel organe juridictionnel est chargé au Sénégal de sanctionner les fautes de gestion administrative et financière commises par les ordonnateurs ou administrateurs de crédits ?","answers": ["Le Conseil d'État","La Chambre de discipline financière de la Cour des Comptes","La Haute Cour de Justice","L'Office National de Lutte contre la Fraude"],"correctAnswer": 1,"explanation": "La Cour des comptes, via sa compétence juridictionnelle, juge les gestionnaires publics reconnus coupables d'irrégularités ou de fautes de gestion."},{"id": 18,"theme": "Économie","difficulty": "Difficile","question": "Quel concept d'économie publique désigne le fait qu'un consommateur profite d'un bien collectif (ex: l'éclairage public) sans en payer le coût ?","answers": ["L'aléa moral (Moral hazard)","Le passager clandestin (Free-rider problem)","Le dilemme du prisonnier","L'effet de démonstration"],"correctAnswer": 1,"explanation": "En raison de la non-excluabilité des biens publics, les agents sont incités à adopter un comportement de passager clandestin, rendant le marché incapable de produire ces biens."},{"id": 19,"theme": "Finances publiques","difficulty": "Difficile","question": "Qu'est-ce qu'une Autorisation d'Engagement (AE) dans le cadre du budget-programme ?","answers": ["La limite supérieure des crédits pouvant être ordonnancés au cours de l'année","La limite supérieure des dépenses que l'ordonnateur peut engager pour une opération, souvent pluriannuelle","Une avance de trésorerie octroyée par le comptable public","Un crédit destiné exclusivement au paiement des salaires"],"correctAnswer": 1,"explanation": "Les AE constituent le support de la programmation pluriannuelle, tandis que les Crédits de Paiement (CP) fixent la limite des dépenses payables sur l'année."},{"id": 20,"theme": "Économie","difficulty": "Difficile","question": "Quelle composante de l'école néo-institutionnelle, développée par William Niskanen, analyse la bureaucratie publique en postulant que les hauts fonctionnaires cherchent à maximiser la taille de leur propre budget ?","answers": ["La théorie des droits de propriété","La théorie des choix publics (Public Choice)","La théorie des coûts de transaction","La macroéconomie organique"],"correctAnswer": 1,"explanation": "L'école du Public Choice applique les outils de la microéconomie aux choix politiques et administratifs, montrant que les acteurs publics agissent aussi selon des intérêts rationnels propres."},{"id": 21,"theme": "Finances publiques","difficulty": "Difficile","question": "Au Sénégal, la Loi de finances de l'année (LFI) doit être obligatoirement déposée sur le bureau de l'Assemblée nationale au plus tard à quelle date réglementaire ?","answers": ["Le 30 juin de l'année en cours","Au plus tard le jour de l'ouverture de la session ordinaire unique (octobre)","Le 31 décembre à minuit","Le 15 novembre au plus tard"],"correctAnswer": 1,"explanation": "Les textes organiques imposent le dépôt du projet de PLF au début de la session d'automne de l'Assemblée pour respecter les délais constitutionnels d'examen (60 jours)."},{"id": 22,"theme": "Économie","difficulty": "Difficile","question": "En macroéconomie financière, quelle situation décrit une 'trappe à liquidité' ?","answers": ["Une faillite généralisée du système bancaire commercial","Une situation où le taux d'intérêt est si bas que la politique monétaire devient inefficace car les agents préfèrent détenir de la monnaie plutôt que des titres","Un contrôle strict des capitaux aux frontières d'un pays","Une forte dépréciation du taux de change nominal"],"correctAnswer": 1,"explanation": "Théorisée par Keynes, la trappe à liquidité intervient lorsque le taux d'intérêt est jugé trop bas : la demande de monnaie pour motif de spéculation devient infinie, bloquant l'impact de l'émission monétaire."},{"id": 23,"theme": "Finances publiques","difficulty": "Difficile","question": "Quel principe juridique interdit à l'ordonnateur de détenir ou de manipuler des fonds publics sous peine d'être poursuivi pour gestion de fait ?","answers": ["Le principe de l'unité de trésorerie","Le principe d'exclusivité des compétences législatives","Le principe de séparation des ordonnateurs et des comptables","La règle du service fait"],"correctAnswer": 2,"explanation": "Ce principe crée une incompatibilité stricte : seul le comptable public, astreint à une responsabilité personnelle et pécuniaire, est habilité à manier les deniers publics."},{"id": 24,"theme": "Économie","difficulty": "Difficile","question": "Quelle théorie de la croissance économique intègre le capital humain, les infrastructures publiques et la recherche-développement comme des variables endogènes explicatives du taux de croissance ?","answers": ["Le modèle de croissance exogène de Solow","Les théories de la croissance endogène (Romer, Lucas, Barro)","L'économie du bien-être de Pigou","Le structuralisme de la CEPAL"],"correctAnswer": 1,"explanation": "Les théories de la croissance endogène montrent que la croissance s'auto-entretient grâce à des externalités positives générées par les investissements publics et privés."},{"id": 25,"theme": "Finances publiques","difficulty": "Difficile","question": "Quelle est la principale fonction du Compte Unique du Trésor (CUT) ouvert auprès de la Banque centrale ?","answers": ["Permettre aux ministres de dépenser sans contrôle préalable","Centraliser les disponibilités financières de l'État pour optimiser la gestion de la trésorerie et éviter les emprunts inutiles","Financer directement les campagnes électorales des partis politiques","Gérer exclusivement l'aide publique internationale au développement"],"correctAnswer": 1,"explanation": "Le CUT répond au principe de l'unité de caisse, permettant au Trésor public de connaître sa situation de liquidité en temps réel et de rationaliser ses appels de fonds."}]
+
+
+
+let current = 0
+let score = 0;
+let selected = null;
+
+function loadQuestion() {
+    const q = quiz[current];
+
+    document.getElementById("question").innerText =
+       ` ${current + 1}. ${q.question}`;
+
+   
+    const theme = document.getElementById("theme");
+    if (theme) {
+        theme.innerText = `${q.theme} • ${q.difficulty}`;
+    }
+
+    const answersDiv = document.getElementById("answers");
+    answersDiv.innerHTML = "";
+
+    q.answers.forEach((answer, index) => {
+
+    answersDiv.innerHTML += `
+        <label
+            class="flex items-center p-4 rounded-xl border border-gray-700 bg-gray-800 hover:bg-gray-700 cursor-pointer transition duration-200">
+
+            <input
+                type="radio"
+                name="answer"
+                value="${index}"
+                class="w-4 h-4 text-blue-500 bg-gray-700 border-gray-600 focus:ring-blue-500">
+
+            <span class="ml-3 text-gray-200">
+                ${answer}
+            </span>
+
+        </label>
+    `;
+
+});
+
+    
+    document.getElementById("progress").style.width =
+       ` ${((current + 1) / quiz.length) * 100}%`;
+}
+
+function nextQuestion() {
+
+    const checked = document.querySelector('input[name="answer"]:checked');
+
+    if (!checked) {
+        alert("Veuillez sélectionner une réponse.");
+        return;
+    }
+
+    selected = parseInt(checked.value);
+
+    const q = quiz[current];
+
+
+    if (selected === q.correctAnswer) {
+        score++;
+    }
+
+    current++;
+
+    if (current < quiz.length) {
+        loadQuestion();
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+
+    const percentage = Math.round((score / quiz.length) * 100);
+
+    document.querySelector(".max-w-2xl").innerHTML = `
+
+        <div class="text-center">
+
+            <h2 class="text-4xl font-bold text-green-400">
+                🎉 Quiz terminé
+            </h2>
+
+            <p class="mt-8 text-2xl text-gray-200">
+                Votre score
+            </p>
+
+            <p class="text-5xl font-bold text-blue-400 mt-2">
+                ${score} / ${quiz.length}
+            </p>
+
+            <p class="mt-4 text-xl text-gray-300">
+                ${percentage} %
+            </p>
+
+            <button
+                onclick="location.reload()"
+                class="mt-8 px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-xl font-semibold transition">
+                Recommencer
+            </button>
+
+        </div>
+
+    `;
+}
+
+loadQuestion();
+</script>
+</body>
+</html>

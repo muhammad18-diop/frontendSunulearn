@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="shortcut icon" href="images/logo2.jpg" type="image/x-icon">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+  rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"><link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  
+  <!-- Flowbite CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet"/>
+  <link rel="stylesheet"href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+</head>
+<body class="bg-gray-900 text-white">
+
+<div class="min-h-screen bg-gray-900 flex items-center justify-center p-4">
+
+    <div class="w-full max-w-2xl bg-gray-800 border border-gray-700 rounded-2xl shadow-2xl p-6">
+
+        <h1 class="text-3xl font-bold text-center text-blue-400 mb-6">
+            Quiz Culture Générale – ENA Cycle B
+        </h1>
+
+        <!-- Thème -->
+        <p id="theme" class="text-gray-400 text-center mb-4"></p>
+
+        <!-- Barre de progression -->
+        <div class="w-full bg-gray-700 rounded-full h-3 mb-6">
+            <div
+                id="progress"
+                class="bg-blue-500 h-3 rounded-full transition-all duration-500"
+                style="width:0%">
+            </div>
+        </div>
+
+        <!-- Question -->
+        <h2 id="question" class="text-xl font-semibold mb-6"></h2>
+
+        <!-- Réponses -->
+        <div id="answers" class="space-y-3"></div>
+
+        <!-- Bouton -->
+        <button
+            onclick="nextQuestion()"
+            class="w-full mt-6 bg-blue-600 hover:bg-blue-700 transition text-white font-semibold py-3 rounded-xl shadow-lg">
+            Question suivante
+        </button>
+
+    </div>
+
+</div>
+<script>
+
+const quiz = [
+  {
+    "id": 1,
+    "theme": "Droit constitutionnel",
+    "difficulty": "Moyen",
+    "question": "Sous la constitution sénégalaise actuelle, quel organe est compétent pour statuer sur la constitutionnalité des lois avant leur promulgation ?",
+    "answers": [
+      "La Cour suprême",
+      "Le Conseil constitutionnel",
+      "La Haute Cour de justice",
+      "Le Conseil d'État"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Le Conseil constitutionnel détient le monopole du contrôle de constitutionnalité par voie d'action (a priori)."
+  },
+  {
+    "id": 2,
+    "theme": "Droit administratif",
+    "difficulty": "Moyen",
+    "question": "Lequel de ces principes fondamentaux régit le fonctionnement continu des services publics ?",
+    "answers": [
+      "Le principe de mutabilité",
+      "Le principe de continuité",
+      "Le principe d'égalité",
+      "Le principe de neutralité"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Le principe de continuité exige que le service public fonctionne sans interruption pour satisfaire l'intérêt général."
+  },
+  {
+    "id": 3,
+    "theme": "Finances publiques",
+    "difficulty": "Difficile",
+    "question": "Au Sénégal, quel document budgétaire présente la trajectoire pluriannuelle des finances publiques sur une période minimale de trois ans ?",
+    "answers": [
+      "La Loi de finances rectificative (LFR)",
+      "Le Document de programmation budgétaire et économique pluriannuelle (DPBEP)",
+      "La Loi de règlement",
+      "Le Projet de loi de finances de l'année (PLF)"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Introduit par les réformes de l'UEMOA, le DPBEP sert de cadre d'orientation pour l'élaboration des budgets sur 3 ans."
+  },
+  {
+    "id": 4,
+    "theme": "Économie",
+    "difficulty": "Difficile",
+    "question": "Quelle théorie économique justifie l'intervention de l'État par l'existence de défaillances de marché, telles que les externalités ou les biens publics ?",
+    "answers": [
+      "L'école classique",
+      "Le courant monétariste",
+      "L'économie keynésienne et néo-keynésienne",
+      "L'école autrichienne"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Les théories keynésiennes et de l'économie publique préconisent la régulation étatique lorsque le marché échoue à allouer efficacement les ressources."
+  },
+  {
+    "id": 5,
+    "theme": "Institutions sénégalaises",
+    "difficulty": "Moyen",
+    "question": "Par qui sont nommés les ministres de la République du Sénégal sur proposition du Premier ministre ?",
+    "answers": [
+      "Le Président de l'Assemblée nationale",
+      "Le Président de la République",
+      "Le Secrétaire général du Gouvernement",
+      "Le Conseil supérieur de la magistrature"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Selon la Constitution, le Président de la République nomme les ministres et met fin à leurs fonctions."
+  },
+  {
+    "id": 6,
+    "theme": "Intégration régionale",
+    "difficulty": "Facile",
+    "question": "Où est établi le siège officiel de la Commission de l'Union Économique et Monétaire Ouest-Africaine (UEMOA) ?",
+    "answers": [
+      "Dakar (Sénégal)",
+      "Ouagadougou (Burkina Faso)",
+      "Abidjan (Côte d'Ivoire)",
+      "Lomé (Togo)"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Le siège de la Commission de l'UEMOA se trouve à Ouagadougou."
+  },
+  {
+    "id": 7,
+    "theme": "Finances publiques",
+    "difficulty": "Moyen",
+    "question": "Quel principe budgétaire interdit l'affectation d'une recette déterminée à une dépense précise, garantissant que l'ensemble des recettes couvre l'ensemble des dépenses ?",
+    "answers": [
+      "Le principe de spécialité",
+      "Le principe d'universalité",
+      "Le principe d'unité",
+      "Le principe d'annualité"
+    ],
+    "correctAnswer": 1,
+    "explanation": "L'universalité budgétaire regroupe la règle de non-compensation et la règle de non-affectation des recettes."
+  },
+  {
+    "id": 8,
+    "theme": "Droit administratif",
+    "difficulty": "Difficile",
+    "question": "Quelle juridiction sénégalaise est compétente en premier et dernier ressort pour statuer sur les recours pour excès de pouvoir formés contre les décrets du Président de la République ?",
+    "answers": [
+      "Le Tribunal de grande instance",
+      "La Cour d'appel de Dakar",
+      "La Chambre administrative de la Cour suprême",
+      "Le Tribunal de grande instance hors classe"
+    ],
+    "correctAnswer": 2,
+    "explanation": "La Cour suprême (via sa chambre administrative) possède la compétence exclusive pour juger les recours pour excès de pouvoir contre les actes des autorités administratives centrales."
+  },
+  {
+    "id": 9,
+    "theme": "Culture générale",
+    "difficulty": "Moyen",
+    "question": "Qui fut le premier Directeur d'origine africaine de l'UNESCO de 1974 à 1987 ?",
+    "answers": [
+      "Koffi Annan",
+      "Amadou-Mahtar Mbow",
+      "Boutros Boutros-Ghali",
+      "Abdou Diouf"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Le Sénégalais Amadou-Mahtar Mbow a dirigé l'UNESCO durant treize ans."
+  },
+  {
+    "id": 10,
+    "theme": "Économie",
+    "difficulty": "Moyen",
+    "question": "Quel terme désigne la situation économique caractérisée par une augmentation générale et durable du niveau des prix ?",
+    "answers": [
+      "La déflation",
+      "La stagflation",
+      "L'inflation",
+      "La récession"
+    ],
+    "correctAnswer": 2,
+    "explanation": "L'inflation est la perte du pouvoir d'achat de la monnaie se traduisant par une hausse des prix."
+  },
+  {
+    "id": 11,
+    "theme": "Droit constitutionnel",
+    "difficulty": "Difficile",
+    "question": "En cas de vacance de la Présidence de la République au Sénégal, qui exerce provisoirement les fonctions de chef de l'État ?",
+    "answers": [
+      "Le Premier ministre",
+      "Le Président de l'Assemblée nationale",
+      "Le Président du Conseil constitutionnel",
+      "Le ministre de l'Intérieur"
+    ],
+    "correctAnswer": 1,
+    "explanation": "L'article 39 de la Constitution dispose qu'en cas de vacance, l'intérim est assuré par le Président de l'Assemblée nationale."
+  },
+  {
+    "id": 12,
+    "theme": "Décentralisation",
+    "difficulty": "Moyen",
+    "question": "Laquelle de ces entités territoriales constitue une collectivité territoriale locale au Sénégal depuis la réforme de l'Acte III de la décentralisation ?",
+    "answers": [
+      "L'Arrondissement",
+      "La Région",
+      "Le Département",
+      "La Sous-préfecture"
+    ],
+    "correctAnswer": 2,
+    "explanation": "L'Acte III (2013) a supprimé la région en tant que collectivité et a érigé le département et la commune en seuls échelons locaux."
+  },
+  {
+    "id": 13,
+    "theme": "Finances publiques",
+    "difficulty": "Moyen",
+    "question": "Dans le cadre de l'exécution du budget public, quel acteur est exclusivement chargé de la phase de recouvrement des recettes et du paiement des dépenses ?",
+    "answers": [
+      "L'ordonnateur",
+      "Le comptable public",
+      "Le contrôleur financier",
+      "Le ministre des Finances"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Le principe de séparation des ordonnateurs et des comptables publics réserve le maniement des fonds au seul comptable public."
+  },
+  {
+    "id": 14,
+    "theme": "Économie",
+    "difficulty": "Difficile",
+    "question": "Quel indicateur macroéconomique mesure la valeur totale de la production interne de biens et services d'un pays au cours d'une année ?",
+    "answers": [
+      "Le Produit National Brut (PNB)",
+      "L'Indice des Prix à la Consommation (IPC)",
+      "Le Produit Intérieur Brut (PIB)",
+      "La Balance des paiements"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Le PIB synthétise la richesse créée par l'ensemble des agents économiques résidents sur le territoire national."
+  },
+  {
+    "id": 15,
+    "theme": "Histoire africaine",
+    "difficulty": "Moyen",
+    "question": "En quelle année l'Organisation de l'Unité Africaine (OUA) a-t-elle été officiellement remplacée par l'Union Africaine (UA) ?",
+    "answers": [
+      "1999",
+      "2002",
+      "2005",
+      "2010"
+    ],
+    "correctAnswer": 1,
+    "explanation": "L'Union Africaine a été lancée au sommet de Durban en juillet 2002, succédant à l'OUA créée en 1963."
+  },
+  {
+    "id": 16,
+    "theme": "Droit administratif",
+    "difficulty": "Difficile",
+    "question": "Qu'est-ce que l'interdiction de l'arbitraire ou le détournement de pouvoir en droit administratif ?",
+    "answers": [
+      "L'usage d'une compétence dans un but autre que l'intérêt public ou la fin légalement prévue",
+      "Une erreur matérielle dans le calcul d'une taxe",
+      "Le non-respect des règles de forme d'un acte",
+      "Un retard injustifié dans la signature d'un décret"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Il y a détournement de pouvoir lorsque l'administration utilise ses prérogatives pour des motifs personnels ou étrangers à la loi."
+  },
+  {
+    "id": 17,
+    "theme": "Culture générale",
+    "difficulty": "Facile",
+    "question": "Quel traité international historique a donné naissance à l'Organisation des Nations Unies (ONU) en 1945 ?",
+    "answers": [
+      "Le traité de Versailles",
+      "La charte de San Francisco",
+      "Les accords de Bretton Woods",
+      "L'accord de Vienne"
+    ],
+    "correctAnswer": 1,
+    "explanation": "La Charte des Nations Unies a été signée à San Francisco le 26 juin 1945."
+  },
+  {
+    "id": 18,
+    "theme": "Droit de la fonction publique",
+    "difficulty": "Difficile",
+    "question": "Au Sénégal, quel texte législatif fixe le statut général des fonctionnaires ?",
+    "answers": [
+      "Le Code du Travail",
+      "La loi n° 61-33 du 15 juin 1961",
+      "Le Code de procédure civile",
+      "La loi organique relative aux lois de finances"
+    ],
+    "correctAnswer": 1,
+    "explanation": "La loi 61-33 régit les droits, obligations et carrières des agents de l'État du Sénégal."
+  },
+  {
+    "id": 19,"theme": "Monnaie","difficulty": "Facile","question": "Quelle institution financière assure l'émission exclusive du Franc CFA pour les États membres de l'UMOA ?","answers": ["La Banque Mondiale","La Banque Centrale des États de l'Afrique de l'Ouest (BCEAO)","La Banque Africaine de Développement (BAD)","Le Fonds Monétaire International (FMI)"],"correctAnswer": 1,"explanation": "La BCEAO détient le privilège exclusif de l'émission monétaire dans la zone UMOA."},{"id": 20,"theme": "Institutions internationales","difficulty": "Moyen","question": "Quel organe de l'ONU est le seul habilité à adopter des résolutions contraignantes et à décider de sanctions ou d'interventions militaires ?","answers": ["L'Assemblée générale","Le Conseil de sécurité","Le Secrétariat général","Le Conseil économique et social"],"correctAnswer": 1,"explanation": "Le Conseil de sécurité dispose de la responsabilité principale du maintien de la paix et de la sécurité internationales."},{"id": 21,"theme": "Droit constitutionnel","difficulty": "Moyen","question": "Comment appelle-t-on le régime politique caractérisé par une séparation stricte des pouvoirs où le gouvernement n'est pas responsable devant le Parlement ?","answers": ["Le régime parlementaire","Le régime présidentiel","Le régime conventionnel","Le régime d'assemblée"],"correctAnswer": 1,"explanation": "Le régime présidentiel (comme aux USA) repose sur une séparation rigide des pouvoirs exécutif et législatif."},{"id": 22,"theme": "Finances publiques","difficulty": "Difficile","question": "Quelle loi de finances constate les résultats financiers de chaque année civile et approuve les différences entre les résultats et les prévisions ?","answers": ["La Loi de finances initiale (LFI)","La Loi de finances rectificative (LFR)","La Loi de règlement","La Loi de programmation"],"correctAnswer": 2,"explanation": "La loi de règlement clôture l'exercice budgétaire en arrêtant définitivement les comptes de l'État."},{"id": 23,"theme": "Économie","difficulty": "Moyen","question": "Quel économiste écossais du XVIIIe siècle est considéré comme le père fondateur de l'économie moderne grâce à son ouvrage sur la richesse des nations ?","answers": ["David Ricardo","Karl Marx","Adam Smith","John Maynard Keynes"],"correctAnswer": 2,"explanation": "Adam Smith a théorisé la division du travail et le concept de la « main invisible » en 1776."},{"id": 24,"theme": "Droit administratif","difficulty": "Difficile","question": "La déconcentration administrative se distingue de la décentralisation par le fait que :","answers": ["Elle transfère des compétences à des personnes morales distinctes de l'État","Elle confie des pouvoirs de décision à des agents nommés soumis au pouvoir hiérarchique de l'État","Elle accorde l'autonomie financière intégrale aux régions","Elle supprime le contrôle de légalité du Préfet"],"correctAnswer": 1,"explanation": "Selon la formule classique : « C'est le même marteau qui frappe, mais on en a raccourci le manche ». Les agents déconcentrés (Gouverneur, Préfet) agissent au nom de l'État."},{"id": 25,"theme": "Géographie & Économie","difficulty": "Moyen","question": "Quel projet d'infrastructure majeure au Sénégal vise à désengorger la capitale en créant un pôle urbain et économique moderne à 30 km de Dakar ?","answers": ["La zone franche de Ziguinchor","La nouvelle ville de Diamniadio","Le port autonome de Kaolack","Le pôle touristique de Cap Skirring"],"correctAnswer": 1,"explanation": "Le pôle urbain de Diamniadio abrite ministères, universités et infrastructures internationales pour décentraliser les activités de Dakar."},{"id": 26,"theme": "Géopolitique","difficulty": "Moyen","question": "Quel accord commercial signé au niveau continental vise à créer un marché unique pour les marchandises et les services en Afrique ?","answers": ["La CEDEAO","La ZLECAF (Zone de libre-échange continentale africaine)","Le NEPAD","L'AGOA"],"correctAnswer": 1,"explanation": "La ZLECAF cherche à stimuler le commerce intra-africain en éliminant progressivement les barrières tarifaires."},{"id": 27,"theme": "Finances publiques","difficulty": "Difficile","question": "Quel impôt direct, assis sur les revenus des personnes physiques au Sénégal, est calculé selon un barème progressif par tranches ?","answers": ["La Taxe sur la Valeur Ajoutée (TVA)","L'Impôt sur le Revenu des Personnes Physiques (IR)","L'Impôt sur les Sociétés (IS)","La contribution économique locale"],"correctAnswer": 1,"explanation": "L'IR s'applique de manière progressive : le taux d'imposition augmente à mesure que les revenus s'élèvent."},{"id": 28,"theme": "Histoire du Sénégal","difficulty": "Moyen","question": "En quelle année le Sénégal a-t-il proclamé son indépendance au sein de la Fédération du Mali, avant l'éclatement de celle-ci ?","answers": ["1958","1960","1963","1968"],"correctAnswer": 1,"explanation": "Le Sénégal est devenu indépendant en 1960 (le transfert de compétences ayant eu lieu le 4 avril, puis le retrait de la fédération le 20 août)."},{"id": 29,"theme": "Droit public","difficulty": "Difficile","question": "Parmi ces actes juridiques, lequel possède la valeur normative la plus élevée au sein de la hiérarchie des normes ?","answers": ["Le décret présidentiel","La loi organique","L'arrêté ministériel","La Constitution"],"correctAnswer": 3,"explanation": "La Constitution est la norme suprême de l'État à laquelle toutes les autres doivent se conformer."},{"id": 30,"theme": "Culture générale","difficulty": "Facile","question": "Quel célèbre écrivain et homme d'État fut le premier président de la République du Sénégal ?","answers": ["Abdou Diouf","Léopold Sédar Senghor","Cheikh Anta Diop","Mamadi Doumbouya"],"correctAnswer": 1,"explanation": "Léopold Sédar Senghor a dirigé le Sénégal de 1960 à 1980 avant de démissionner volontairement."}]
+
+
+let current = 0
+let score = 0;
+let selected = null;
+
+function loadQuestion() {
+    const q = quiz[current];
+
+    document.getElementById("question").innerText =
+       ` ${current + 1}. ${q.question}`;
+
+   
+    const theme = document.getElementById("theme");
+    if (theme) {
+        theme.innerText = `${q.theme} • ${q.difficulty}`;
+    }
+
+    const answersDiv = document.getElementById("answers");
+    answersDiv.innerHTML = "";
+
+    q.answers.forEach((answer, index) => {
+
+    answersDiv.innerHTML += `
+        <label
+            class="flex items-center p-4 rounded-xl border border-gray-700 bg-gray-800 hover:bg-gray-700 cursor-pointer transition duration-200">
+
+            <input
+                type="radio"
+                name="answer"
+                value="${index}"
+                class="w-4 h-4 text-blue-500 bg-gray-700 border-gray-600 focus:ring-blue-500">
+
+            <span class="ml-3 text-gray-200">
+                ${answer}
+            </span>
+
+        </label>
+    `;
+
+});
+
+    
+    document.getElementById("progress").style.width =
+       ` ${((current + 1) / quiz.length) * 100}%`;
+}
+
+function nextQuestion() {
+
+    const checked = document.querySelector('input[name="answer"]:checked');
+
+    if (!checked) {
+        alert("Veuillez sélectionner une réponse.");
+        return;
+    }
+
+    selected = parseInt(checked.value);
+
+    const q = quiz[current];
+
+
+    if (selected === q.correctAnswer) {
+        score++;
+    }
+
+    current++;
+
+    if (current < quiz.length) {
+        loadQuestion();
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+
+    const percentage = Math.round((score / quiz.length) * 100);
+
+    document.querySelector(".max-w-2xl").innerHTML = `
+
+        <div class="text-center">
+
+            <h2 class="text-4xl font-bold text-green-400">
+                🎉 Quiz terminé
+            </h2>
+
+            <p class="mt-8 text-2xl text-gray-200">
+                Votre score
+            </p>
+
+            <p class="text-5xl font-bold text-blue-400 mt-2">
+                ${score} / ${quiz.length}
+            </p>
+
+            <p class="mt-4 text-xl text-gray-300">
+                ${percentage} %
+            </p>
+
+            <button
+                onclick="location.reload()"
+                class="mt-8 px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-xl font-semibold transition">
+                Recommencer
+            </button>
+
+        </div>
+
+    `;
+}
+
+loadQuestion();
+</script>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="shortcut icon" href="images/logo2.jpg" type="image/x-icon">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+  rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"><link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  
+  <!-- Flowbite CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet"/>
+  <link rel="stylesheet"href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+</head>
+<body class="bg-gray-900 text-white">
+
+<div class="min-h-screen bg-gray-900 flex items-center justify-center p-4">
+
+    <div class="w-full max-w-2xl bg-gray-800 border border-gray-700 rounded-2xl shadow-2xl p-6">
+
+        <h1 class="text-3xl font-bold text-center text-blue-400 mb-6">
+            Quiz Procédure Pénal de Base – Police
+        </h1>
+
+        <!-- Thème -->
+        <p id="theme" class="text-gray-400 text-center mb-4"></p>
+
+        <!-- Barre de progression -->
+        <div class="w-full bg-gray-700 rounded-full h-3 mb-6">
+            <div
+                id="progress"
+                class="bg-blue-500 h-3 rounded-full transition-all duration-500"
+                style="width:0%">
+            </div>
+        </div>
+
+        <!-- Question -->
+        <h2 id="question" class="text-xl font-semibold mb-6"></h2>
+
+        <!-- Réponses -->
+        <div id="answers" class="space-y-3"></div>
+
+        <!-- Bouton -->
+        <button
+            onclick="nextQuestion()"
+            class="w-full mt-6 bg-blue-600 hover:bg-blue-700 transition text-white font-semibold py-3 rounded-xl shadow-lg">
+            Question suivante
+        </button>
+
+    </div>
+
+</div>
+<script>
+
+const quiz = [
+  {
+    "id": 1,
+    "theme": "Procédure pénale",
+    "difficulty": "Moyen",
+    "question": "Quelle autorité judiciaire détient la direction supérieure des activités de la police judiciaire dans le ressort de son tribunal ?",
+    "answers": [
+      "Le Procureur de la République",
+      "Le Juge d'instruction",
+      "Le Directeur général de la Police nationale",
+      "Le Président du Tribunal"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Le Procureur de la République dirige la police judiciaire dans son ressort, reçoit les plaintes et dénonciations et décide de l'opportunité des poursuites."
+  },
+  {
+    "id": 2,
+    "theme": "Procédure pénale",
+    "difficulty": "Facile",
+    "question": "Comment qualifie-t-on l'infraction qui est en train de se commettre ou qui vient tout juste de se commettre ?",
+    "answers": [
+      "Une infraction continue",
+      "Une infraction flagrante",
+      "Une infraction d'habitude",
+      "Une infraction complexe"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Le flagrant délit est caractérisé par l'actualité de l'infraction, ce qui confère des pouvoirs d'enquête étendus aux officiers de police judiciaire."
+  },
+  {
+    "id": 3,
+    "theme": "Procédure pénale",
+    "difficulty": "Difficile",
+    "question": "Sauf prolongation légale accordée par le Procureur, quelle est la durée maximale initiale d'une garde à vue de droit commun ?",
+    "answers": [
+      "24 heures",
+      "48 heures",
+      "72 heures",
+      "96 heures"
+    ],
+    "correctAnswer": 1,
+    "explanation": "En droit commun sénégalais, la garde à vue ne peut excéder 48 heures. Elle peut être prolongée d'un nouveau délai de 48 heures sur autorisation écrite du Procureur."
+  },
+  {
+    "id": 4,
+    "theme": "Procédure pénale",
+    "difficulty": "Moyen",
+    "question": "Qui, parmi les personnels de police suivants, possède de plein droit la qualité d'Officier de Police Judiciaire (OPJ) ?",
+    "answers": [
+      "Les agents de police adjoints",
+      "Les commissaires et officiers de police",
+      "Tous les sous-officiers de police sans distinction",
+      "Les gardiens de la paix"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Les commissaires et les officiers de police ont la qualité d'OPJ. Les grades inférieurs ont généralement la qualité d'Agent de Police Judiciaire (APJ)."
+  },
+  {
+    "id": 5,
+    "theme": "Procédure pénale",
+    "difficulty": "Moyen",
+    "question": "Dans quel cas l'ouverture d'une information judiciaire (saisine d'un juge d'instruction) est-elle légalement obligatoire ?",
+    "answers": [
+      "En matière de contravention",
+      "En matière de délit de droit commun",
+      "En matière de crime",
+      "Uniquement sur demande écrite de la victime"
+    ],
+    "correctAnswer": 2,
+    "explanation": "L'instruction préparatoire est obligatoire en matière de crime, facultative en matière de délit et exceptionnelle en matière de contravention."
+  },
+  {
+    "id": 6,
+    "theme": "Procédure pénale",
+    "difficulty": "Moyen",
+    "question": "Quel acte juridique, délivré par un juge d'instruction, ordonne aux forces de l'ordre d'amener immédiatement un suspect devant lui ?",
+    "answers": [
+      "Un mandat de dépôt",
+      "Un mandat d'amener",
+      "Un mandat de perquisition",
+      "Une commission rogatoire"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Le mandat d'amener est l'ordre donné à la force publique de conduire l'inculpé devant le juge. Le mandat de dépôt, lui, ordonne l'incarcération en prison."
+  },
+  {
+    "id": 7,
+    "theme": "Procédure pénale",
+    "difficulty": "Difficile",
+    "question": "Quel principe fondamental interdit à la police d'exécuter une perquisition domiciliaire de nuit, sauf exceptions liées au terrorisme ou à la criminalité organisée ?",
+    "answers": [
+      "L'inviolabilité du domicile",
+      "Le secret de l'enquête",
+      "La présomption d'innocence",
+      "Le principe du contradictoire"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Le code de procédure pénale encadre strictement les heures de perquisition (interdites en principe entre 21h et 6h du matin) pour préserver l'inviolabilité du domicile."
+  },
+  {
+    "id": 8,
+    "theme": "Procédure pénale",
+    "difficulty": "Moyen",
+    "question": "En dehors du cas de crime flagrant, une perquisition dans un cabinet d'avocat requiert obligatoirement la présence de quel acteur ?",
+    "answers": [
+      "Le Directeur de la Police",
+      "Le Bâtonnier de l'Ordre des avocats (ou son représentant) et un magistrat",
+      "Un huissier de justice",
+      "Le ministre de la Justice"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Pour préserver le secret professionnel et les droits de la défense, la perquisition d'un cabinet d'avocat est soumise à la présence obligatoire du Bâtonnier et menée par un magistrat."
+  },
+  {
+    "id": 9,
+    "theme": "Procédure pénale",
+    "difficulty": "Facile",
+    "question": "Quel principe juridique postule qu'un individu est considéré comme non coupable tant que sa responsabilité n'a pas été légalement établie par un tribunal ?",
+    "answers": [
+      "Le principe de légalité des délits",
+      "La présomption d'innocence",
+      "L'autorité de la chose jugée",
+      "Le double degré de juridiction"
+    ],
+    "correctAnswer": 1,
+    "explanation": "La présomption d'innocence est un droit fondamental qui s'impose aux enquêteurs durant toute la phase de l'enquête policière."
+  },
+  {
+    "id": 10,
+    "theme": "Procédure pénale",
+    "difficulty": "Difficile",
+    "question": "Comment appelle-t-on l'acte par lequel un juge d'instruction délègue ses pouvoirs à un OPJ pour effectuer des actes d'information (auditions, perquisitions) ?",
+    "answers": [
+      "Un soit-transmis",
+      "Une commission rogatoire",
+      "Un réquisitoire introductif",
+      "Une ordonnance de renvoi"
+    ],
+    "correctAnswer": 1,
+    "explanation": "La commission rogatoire permet au juge d'instruction de charger un autre juge ou un OPJ d'exécuter à sa place les actes d'instruction qu'il estime nécessaires."
+  },
+  {
+    "id": 11,
+    "theme": "Procédure pénale",
+    "difficulty": "Moyen",
+    "question": "Lorsqu'une personne fait l'objet d'une mesure de garde à vue, à quel moment précis doit-elle être informée de ses droits (notamment celui d'être assistée par un avocat) ?",
+    "answers": [
+      "Uniquement à la fin de la garde à vue, avant d'être déférée",
+      "Dès la notification de la mesure de garde à vue",
+      "Seulement si le suspect en fait la demande écrite",
+      "Lors du premier interrogatoire devant le juge d'instruction"
+    ],
+    "correctAnswer": 1,
+    "explanation": "L'évolution de la procédure pénale (notamment le règlement de l'UEMOA) impose la notification immédiate des droits dès le début du placement en garde à vue."
+  },
+  {
+    "id": 12,
+    "theme": "Procédure pénale",
+    "difficulty": "Difficile",
+    "question": "Quel type d'enquête est mené par la police judiciaire pour les infractions non flagrantes, nécessitant en principe l'accord des personnes pour les perquisitions ?",
+    "answers": [
+      "L'enquête de flagrance",
+      "L'enquête préliminaire",
+      "L'instruction préparatoire",
+      "L'enquête pour recherche des causes de la mort"
+    ],
+    "correctAnswer": 1,
+    "explanation": "L'enquête préliminaire concerne les infractions ordinaires ou passées. Contrairement à la flagrance, l'OPJ ne peut y effectuer de perquisition sans l'assentiment exprès de l'occupant des lieux."
+  },
+  {
+    "id": 13,
+    "theme": "Procédure pénale",
+    "difficulty": "Facile",
+    "question": "Quel document écrit, rédigé par l'OPJ, consigne officiellement les constatations, les auditions et les actes d'une enquête pour être transmis au Procureur ?",
+    "answers": [
+      "Une main courante",
+      "Un procès-verbal (PV)",
+      "Un rapport de synthèse confidentiel",
+      "Une note de service"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Les procès-verbaux font foi en justice selon les conditions fixées par la loi et matérialisent l'ensemble des investigations policières."
+  },
+  {
+    "id": 14,
+    "theme": "Procédure pénale",
+    "difficulty": "Moyen",
+    "question": "Si le Procureur de la République estime que les faits ne justifient pas de poursuites pénales (faute de preuves ou infraction mineure), quelle décision prend-il ?",
+    "answers": [
+      "Une ordonnance de non-lieu",
+      "Un classement sans suite",
+      "Un arrêt d'acquittement",
+      "Un jugement de relaxe"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Le classement sans suite est une décision administrative du parquet réversible à tout moment. L'ordonnance de non-lieu, quant à elle, est un acte du juge d'instruction."
+  },
+  {
+    "id": 15,
+    "theme": "Procédure pénale",
+    "difficulty": "Difficile",
+    "question": "Quelle juridiction pénale de jugement est compétente pour juger les individus poursuivis pour des infractions qualifiées de crimes ?",
+    "answers": [
+      "Le Tribunal de simple police",
+      "Le Tribunal correctionnel",
+      "La Chambre criminelle du Tribunal de grande instance",
+      "La Cour d'appel"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Les infractions se divisent en contraventions (tribunal de police), délits (tribunal correctionnel) et crimes, ces derniers relevant de la Chambre criminelle."
+  }
+]
+
+
+
+let current = 0
+let score = 0;
+let selected = null;
+
+function loadQuestion() {
+    const q = quiz[current];
+
+    document.getElementById("question").innerText =
+       ` ${current + 1}. ${q.question}`;
+
+   
+    const theme = document.getElementById("theme");
+    if (theme) {
+        theme.innerText = `${q.theme} • ${q.difficulty}`;
+    }
+
+    const answersDiv = document.getElementById("answers");
+    answersDiv.innerHTML = "";
+
+    q.answers.forEach((answer, index) => {
+
+    answersDiv.innerHTML += `
+        <label
+            class="flex items-center p-4 rounded-xl border border-gray-700 bg-gray-800 hover:bg-gray-700 cursor-pointer transition duration-200">
+
+            <input
+                type="radio"
+                name="answer"
+                value="${index}"
+                class="w-4 h-4 text-blue-500 bg-gray-700 border-gray-600 focus:ring-blue-500">
+
+            <span class="ml-3 text-gray-200">
+                ${answer}
+            </span>
+
+        </label>
+    `;
+
+});
+
+    
+    document.getElementById("progress").style.width =
+       ` ${((current + 1) / quiz.length) * 100}%`;
+}
+
+function nextQuestion() {
+
+    const checked = document.querySelector('input[name="answer"]:checked');
+
+    if (!checked) {
+        alert("Veuillez sélectionner une réponse.");
+        return;
+    }
+
+    selected = parseInt(checked.value);
+
+    const q = quiz[current];
+
+
+    if (selected === q.correctAnswer) {
+        score++;
+    }
+
+    current++;
+
+    if (current < quiz.length) {
+        loadQuestion();
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+
+    const percentage = Math.round((score / quiz.length) * 100);
+
+    document.querySelector(".max-w-2xl").innerHTML = `
+
+        <div class="text-center">
+
+            <h2 class="text-4xl font-bold text-green-400">
+            Quiz terminé
+            </h2>
+
+            <p class="mt-8 text-2xl text-gray-200">
+                Votre score
+            </p>
+
+            <p class="text-5xl font-bold text-blue-400 mt-2">
+                ${score} / ${quiz.length}
+            </p>
+
+            <p class="mt-4 text-xl text-gray-300">
+                ${percentage} %
+            </p>
+
+            <button
+                onclick="location.reload()"
+                class="mt-8 px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-xl font-semibold transition">
+                Recommencer
+            </button>
+
+        </div>
+
+    `;
+}
+
+loadQuestion();
+</script>
+</body>
+</html>
