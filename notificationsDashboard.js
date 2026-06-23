@@ -36,5 +36,4 @@ result.textContent = data.message;
     }
   });
 
-  const a = 5
-  const b = 6
+  
