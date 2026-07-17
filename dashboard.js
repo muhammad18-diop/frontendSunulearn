@@ -1,12 +1,14 @@
 async function chargerStats() {
     try {
+
+        
+        const token = localStorage.getItem("token");
         let role = localStorage.getItem("role");
-        if (role !== "admin") {
+        if (role !== "admin" && !token) {
             window.location.href = "404.html";
             return;
         }
 
-        const token = localStorage.getItem("token");
 
         const response = await fetch("https://backendsunulearn-3.onrender.com/api/dashboard/stats", {
             headers: {
@@ -204,6 +206,6 @@ function supprimerCours(id) {
     }
 }
 
-// Lancement des fonctions au démarrage
+
 chargerStats();
 chargerCours();
