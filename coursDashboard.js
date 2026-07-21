@@ -27,7 +27,7 @@ formAjout?.addEventListener("submit", async (e) => {
     }
 
     try {
-        const response = await fetch("https://backendsunulearn-3.onrender.com/api/courses/add", {
+        const response = await fetch("https://backend-develop-vp3p.onrender.com/api/courses/add", {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem("token")}`
