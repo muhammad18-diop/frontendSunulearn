@@ -455,3 +455,22 @@ async function programmeTab() {
     }
 }
 programmeTab();
+
+let lienCliquer = document.getElementByclassName("lien")
+let tabCours = []
+
+lienCliquer.addEventListener("click", 
+    () => {
+        async function cliqueCours(){
+            const response = await fetch("programmes.json");
+            const data = await response.json();
+            for (let i = 0; i < data.length; i++){
+                tabCours.push(tab[i])
+            }
+            console.log(tabCours);
+            
+        }
+
+        cliqueCours();
+    }
+)
