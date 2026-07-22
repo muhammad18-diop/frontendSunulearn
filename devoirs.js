@@ -207,3 +207,76 @@ function procederNettoyageSessionDirect() {
     localStorage.removeItem("email");
     window.location.replace("index.html");
 }
+
+
+
+const form = document.querySelector("form");
+
+form.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+
+    const nom = document.getElementById("nom").value;
+    const titre = document.getElementById("titre").value;
+    const fichier = document.getElementById("fichier").files[0];
+    const commentaire = document.getElementById("commentaire").value;
+
+
+    // Vérification fichier
+    if (!fichier) {
+        alert("Veuillez sélectionner un fichier");
+        return;
+    }
+
+
+    // Création FormData
+    const formData = new FormData();
+
+    formData.append("nom", nom);
+    formData.append("titre", titre);
+    formData.append("commentaire", commentaire);
+
+    // Le nom doit correspondre au multer .single("devoirFile")
+    formData.append("devoirFile", fichier);
+
+
+
+    try {
+
+        const response = await fetch(
+            "https://backend-develop-vp3p.onrender.com/api/devoirs/upload",
+            {
+                method: "POST",
+                body: formData
+            }
+        );
+
+
+        const data = await response.json();
+
+
+        if (data.success) {
+
+            alert("Devoir envoyé avec succès");
+
+            console.log(data.devoir);
+
+            form.reset();
+
+        } else {
+
+            alert(data.message);
+
+        }
+
+
+    } catch (error) {
+
+        console.error("Erreur upload :", error);
+
+        alert("Erreur serveur");
+
+    }
+
+});

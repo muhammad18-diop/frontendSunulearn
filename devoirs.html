@@ -314,73 +314,78 @@
             Vous avez terminé votre devoir ? Remplissez le formulaire ci-dessous et téléversez votre fichier afin qu'il soit examiné par votre formateur.
         </p>
 
-        <form action="#" class="space-y-8">
+       <form action="http://localhost:5000/api/devoirs/upload" method="POST" enctype="multipart/form-data" class="space-y-8">
 
-            <!-- Nom complet -->
-            <div>
-                <label for="nom" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-600">
-                    Nom complet
-                </label>
+    <div>
+        <label for="nom" class="block mb-2 text-sm font-medium text-gray-900">
+            Nom complet
+        </label>
 
-                <input
-                    type="text"
-                    id="nom"
-                    placeholder="Entrez votre nom complet"
-                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-600 dark:text-white"
-                    required>
-            </div>
+        <input
+            type="text"
+            name="nom"
+            id="nom"
+            placeholder="Entrez votre nom complet"
+            class="shadow-sm bg-gray-50 border border-gray-300 rounded-lg block w-full p-2.5"
+            required>
+    </div>
 
-            <!-- Titre du devoir -->
-            <div>
-                <label for="titre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-600">
-                    Titre du devoir
-                </label>
 
-                <input
-                    type="text"
-                    id="titre"
-                    placeholder="Ex : Devoir dissertation ENA Cycle A"
-                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-600 dark:text-white"
-                    required>
-            </div>
+    <div>
+        <label for="titre" class="block mb-2 text-sm font-medium text-gray-900">
+            Titre du devoir
+        </label>
 
-            <!-- Fichier -->
-            <div>
-                <label for="fichier" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Fichier du devoir
-                </label>
+        <input
+            type="text"
+            name="titre"
+            id="titre"
+            placeholder="Ex : Devoir dissertation ENA Cycle A"
+            class="shadow-sm bg-gray-50 border rounded-lg block w-full p-2.5"
+            required>
+    </div>
 
-                <input
-                    type="file"
-                    id="fichier"
-                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none dark:bg-white dark:border-gray-600 dark:text-gray-600">
 
-                <p class="mt-2 text-sm text-gray-500 dark:text-gray-800">
-                    Formats acceptés : PDF, DOCX, DOC ou ZIP (20 Mo maximum).
-                </p>
-            </div>
+    <div>
+        <label for="fichier" class="block mb-2 text-sm font-medium">
+            Fichier du devoir
+        </label>
 
-            <!-- Commentaire -->
-            <div>
-                <label for="commentaire" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Commentaire (facultatif)
-                </label>
+        <input
+            type="file"
+            name="devoirFile"
+            id="fichier"
+            accept=".pdf,.doc,.docx,.zip"
+            class="block w-full border rounded-lg"
+            required>
 
-                <textarea
-                    id="commentaire"
-                    rows="6"
-                    placeholder="Ajoutez un commentaire à votre soumission..."
-                    class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-600 focus:border-blue-600 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"></textarea>
-            </div>
+        <p>
+            Formats acceptés : PDF, DOCX, DOC ou ZIP (20 Mo maximum)
+        </p>
+    </div>
 
-            <!-- Bouton -->
-            <button
-                type="submit"
-                class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-gray-900 hover:bg--700 focus:ring-4 focus:outline-none focus:ring--300 dark:focus:ring-gray-800">
-                Soumettre le devoir
-            </button>
 
-        </form>
+    <div>
+        <label for="commentaire" class="block mb-2 text-sm font-medium">
+            Commentaire
+        </label>
+
+        <textarea
+            name="commentaire"
+            id="commentaire"
+            rows="6"
+            placeholder="Ajoutez un commentaire..."
+            class="block w-full p-2.5 border rounded-lg"></textarea>
+    </div>
+
+
+    <button
+        type="submit"
+        class="py-3 px-5 text-white rounded-lg bg-gray-900">
+        Soumettre le devoir
+    </button>
+
+</form>
 
     </div>
 </section>
