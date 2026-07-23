@@ -211,11 +211,41 @@ function procederNettoyageSessionDirect() {
 
 
 const form = document.querySelector("form");
+const errorModal = document.getElementById("errorModal");
+const errorMessageModal = document.getElementById("errorMessageModal");
+const btnFermerErrorModal = document.getElementById("btnFermerErrorModal");
+
+function afficherErreur(message) {
+
+    errorMessageModal.textContent = message;
+
+    errorModal.classList.remove("hidden");
+    errorModal.classList.add("flex");
+}
+
+function fermerErreur() {
+
+    errorModal.classList.add("hidden");
+    errorModal.classList.remove("flex");
+}
+
+btnFermerErrorModal.addEventListener("click", fermerErreur);
+
+errorModal.addEventListener("click", (e) => {
+
+    if (e.target === errorModal) {
+        fermerErreur();
+    }
+
+});
 
 form.addEventListener("submit", async (e) => {
 
     e.preventDefault();
-
+     const btn = document.getElementById("btn")
+    if(btn.disabled) return
+    btn.disabled = true;
+    btn.innerText = "Soumission en cours..."
 
     const nom = document.getElementById("nom").value;
     const titre = document.getElementById("titre").value;
@@ -255,10 +285,16 @@ form.addEventListener("submit", async (e) => {
 
         const data = await response.json();
 
+       
 
         if (data.success) {
 
-            alert("Devoir envoyé avec succès");
+            const modal = document.getElementById("successModal");
+
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+
+            form.reset();
 
             console.log(data.devoir);
 
@@ -266,17 +302,39 @@ form.addEventListener("submit", async (e) => {
 
         } else {
 
-            alert(data.message);
+           errorMessageModal.textContent = data.message;
+           errorModal.classList.remove("hidden");
+           errorModal.classList.add("flex")
 
         }
 
+      const successModal = document.getElementById("successModal");
+const closeSuccessModal = document.getElementById("closeSuccessModal");
+
+closeSuccessModal.addEventListener("click", () => {
+    successModal.classList.add("hidden");
+    successModal.classList.remove("flex");
+});
+
+  const errorModal = document.getElementById("errorModal");
+const btnFermerErrorModal = document.getElementById("btnFermerErrorModal");
+
+btnFermerErrorModal.addEventListener("click", () => {
+    errorModal.classList.add("hidden");
+    errorModal.classList.remove("flex");
+});
 
     } catch (error) {
 
         console.error("Erreur upload :", error);
 
-        alert("Erreur serveur");
+    errorMessageModal.textContent = "Une erreur est survenue. Veillez réessayer plus tard"
+    errorModal.classList.hidden("hidden")
+    errorModal.classList.add("flex")
 
+    }finally{
+        btn.disabled = false
+        btn.innerText = "Soumettre le Devoir"
     }
 
 });
