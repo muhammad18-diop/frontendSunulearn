@@ -925,38 +925,67 @@ Notre mission est d’aider chaque étudiant et candidat à réussir grâce à u
     }
 
 
-   
-
-
-async function payer(amount, description) {
+  async function payer(amount, description) {
     try {
-        const res = await fetch("https://backendsunulearn-3.onrender.com/api/paydunya/create-payment", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ amount, description })
-        });
+
+        const token = localStorage.getItem("token");
+
+        const res = await fetch(
+            "https://backend-develop-vp3p.onrender.com/api/kpay/create-payment",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    amount,
+                    description
+                })
+            }
+        );
 
         const data = await res.json();
+
         console.log("Réponse backend reçue :", data);
 
-        if (data.success && data.token) {
-            
-            const urlPaiement = "https://paydunya.com/sandbox-checkout/invoice/" + data.token;
+        if (!res.ok) {
+            console.error("Erreur K-PAY :", data);
+            return;
+        }
 
-            
-            console.log("Redirection vers :", urlPaiement);
-            window.location.href = urlPaiement;
+        if (data.success && data.gatewayUrl) {
+
+            console.log(
+                "REDIRECTION K-PAY :",
+                data.gatewayUrl
+            );
+
+            window.location.href = data.gatewayUrl;
+
         } else {
-            console.log("Échec de la transaction : " + (data.message || "Erreur inconnue"));
+
+            console.error(
+                "Gateway URL absente :",
+                data
+            );
+
         }
 
     } catch (error) {
-        console.error("Erreur réseau frontend :", error);
-        console.log("Impossible de joindre le serveur backend.");
+
+        console.error(
+            "Erreur réseau frontend :",
+            error
+        );
     }
 }
+   
+
+
+
+
+   
 
 document.addEventListener("click", (e) => {
     const lien = e.target.closest(".lien");
